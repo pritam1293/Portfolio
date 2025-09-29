@@ -1,57 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
     const [hoveredLink, setHoveredLink] = useState(null);
-    const [activeSection, setActiveSection] = useState('home');
+    const location = useLocation();
 
     const navLinks = [
-        { href: "#home", label: "Home" },
-        { href: "#about", label: "About" },
-        { href: "#projects", label: "Projects" },
-        { href: "#contact", label: "Contact" },
+        { href: "/", label: "Home" },
+        { href: "/about", label: "About" },
+        { href: "/projects", label: "Projects" },
+        { href: "/contact", label: "Contact" },
     ];
 
-    const handleSmoothScroll = (e, targetId) => {
-        e.preventDefault(); // Stops the default link behavior
-        const element = document.getElementById(targetId);
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+    const isActiveLink = (href) => {
+        if (href === '/') {
+            return location.pathname === '/';
         }
+        return location.pathname === href;
     };
-
-    const handleScroll = () => {
-        const sections = ['home', 'about', 'projects', 'contact'];
-        const scrollPosition = window.scrollY + 100; // Offset for navbar height
-
-        for (let section of sections) {
-            const element = document.getElementById(section);
-            if (element) {
-                const elementTop = element.offsetTop;
-                const elementHeight = element.offsetHeight;
-
-                if (scrollPosition >= elementTop && scrollPosition < elementTop + elementHeight) {
-                    setActiveSection(section);
-                    break;
-                }
-            }
-        }
-    };
-
-    useEffect(() => {
-        // Add scroll event listener when component loads
-        window.addEventListener('scroll', handleScroll);
-        
-        // Call once to set initial active section
-        handleScroll();
-        
-        // Cleanup: remove event listener when component is removed
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []); // Empty array means this runs once when component loads
 
     return (
         <nav style={{
@@ -71,29 +37,31 @@ const Navbar = () => {
                         Portfolio
                     </div>
                     {/* Links Section */}
-                    <div style={{ display: 'flex', gap: '24px' }}>
+                    <div style={{ display: 'flex', gap: '32px' }}>
                         {navLinks.map(link => {
                             const linkName = link.label.toLowerCase();
-                            const isActive = activeSection === linkName;
                             const isHovered = hoveredLink === linkName;
+                            const isActive = isActiveLink(link.href);
 
                             return (
-                                <a
+                                <Link
                                     key={link.href}
-                                    href={link.href}
-                                    onClick={(e) => handleSmoothScroll(e, linkName)}
+                                    to={link.href}
                                     onMouseEnter={() => setHoveredLink(linkName)}
                                     onMouseLeave={() => setHoveredLink(null)}
                                     style={{
                                         fontSize: '20px',
-                                        color: isActive ? '#f59e0b' : (isHovered ? '#cbd5e0' : 'white'),
+                                        color: isActive ? '#5D27BE' : (isHovered ? '#B9AFBB' : '#FAFAFA'),
                                         textDecoration: 'none',
-                                        transition: 'color 0.3s ease',
+                                        transition: 'color 0.2s ease',
                                         cursor: 'pointer',
-                                        fontWeight: isActive ? 'bold' : 'normal'
+                                        fontWeight: isActive ? 'bold' : 'normal',
+                                        borderBottom: isActive ? '2px solid #5D27BE' : '2px solid transparent',
+                                        paddingBottom: '4px',
+                                        display: 'inline-block'
                                     }}>
                                     {link.label}
-                                </a>
+                                </Link>
                             );
                         })}
                     </div>
