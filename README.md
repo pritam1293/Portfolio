@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with React.js showcasing my journey
 
 ## 🌟 Live Demo
 
-[View Portfolio](https://pritam1293.github.io/Portfolio) _(Update with your deployment URL)_
+[View Portfolio](https://pritam1293.github.io/Portfolio) _(Demo link, not working)_
 
 ## 👨‍💻 About Me
 
