@@ -1,6 +1,478 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const About = () => {
+  const [visibleSections, setVisibleSections] = useState(new Set());
+
+  const journeyParagraphs = [
+    "I'm currently in my final year of B.Tech at NIT Rourkela, where my passion for technology and problem-solving has led me deep into the world of software development. What started as curiosity about how things work has evolved into a genuine love for creating digital solutions.",
+
+    "My journey spans from foundational programming languages like C++ and Java to modern web technologies like React and Spring Boot. I believe in building robust, user-friendly applications that solve real-world problems.",
+
+    "When I'm not coding, you'll find me on the cricket field, following football matches, or getting excited about tennis during Wimbledon season. I'm also a huge fan of fantasy and sci-fi movies - there's something magical about stories that push the boundaries of imagination!"
+  ];
+
+  // Add this to your data constants at the top
+  const profileStats = [
+    {
+      id: 'education',
+      number: 'Final Year',
+      description: 'B.Tech at NIT Rourkela',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      ),
+      gradient: 'from-blue-500 to-cyan-500'
+    },
+    {
+      id: 'technologies',
+      number: '9+',
+      description: 'Technologies Mastered',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
+      gradient: 'from-purple-500 to-pink-500'
+    },
+    {
+      id: 'sports',
+      number: 'Cricket, Football',
+      description: 'Favorite Sports',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      gradient: 'from-green-500 to-emerald-500'
+    },
+    {
+      id: 'movies',
+      number: '∞',
+      description: 'Sci-Fi Movies Watched',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+        </svg>
+      ),
+      gradient: 'from-orange-500 to-red-500'
+    }
+  ];
+
+  const skillsData = [
+    {
+      id: 'languages',
+      title: 'Languages',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
+      skills: ['C++', 'C', 'Java', 'JavaScript', 'Python'],
+      gradient: 'from-purple-900/40 to-purple-800/40',
+      borderColor: 'border-purple-500/30',
+      hoverBorder: 'hover:border-purple-400/50',
+      hoverShadow: 'hover:shadow-purple-500/20',
+      iconBg: 'bg-purple-500/20',
+      iconHoverBg: 'group-hover:bg-purple-500/30',
+      iconColor: 'text-purple-400',
+      tagGradient: 'from-purple-600 to-purple-700',
+      tagHover: 'hover:from-purple-500 hover:to-purple-600'
+    },
+    {
+      id: 'frontend',
+      title: 'Frontend',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+        </svg>
+      ),
+      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Bootstrap', 'Tailwind CSS'],
+      gradient: 'from-amber-900/40 to-amber-800/40',
+      borderColor: 'border-amber-500/30',
+      hoverBorder: 'hover:border-amber-400/50',
+      hoverShadow: 'hover:shadow-amber-500/20',
+      iconBg: 'bg-amber-500/20',
+      iconHoverBg: 'group-hover:bg-amber-500/30',
+      iconColor: 'text-amber-400',
+      tagGradient: 'from-amber-600 to-amber-700',
+      tagHover: 'hover:from-amber-500 hover:to-amber-600'
+    },
+    {
+      id: 'backend',
+      title: 'Backend',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+        </svg>
+      ),
+      skills: ['Java', 'SpringBoot', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'MySQL'],
+      gradient: 'from-lime-900/40 to-lime-800/40',
+      borderColor: 'border-lime-500/30',
+      hoverBorder: 'hover:border-lime-400/50',
+      hoverShadow: 'hover:shadow-lime-500/20',
+      iconBg: 'bg-lime-500/20',
+      iconHoverBg: 'group-hover:bg-lime-500/30',
+      iconColor: 'text-lime-400',
+      tagGradient: 'from-slate-700 to-slate-800',
+      tagHover: 'hover:from-slate-600 hover:to-slate-700'
+    },
+    {
+      id: 'tools',
+      title: 'Development Tools',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+      skills: ['Git', 'GitHub', 'Postman'],
+      gradient: 'from-slate-700/40 to-slate-800/40',
+      borderColor: 'border-slate-500/30',
+      hoverBorder: 'hover:border-slate-400/50',
+      hoverShadow: 'hover:shadow-slate-500/20',
+      iconBg: 'bg-slate-500/20',
+      iconHoverBg: 'group-hover:bg-slate-500/30',
+      iconColor: 'text-slate-400',
+      tagGradient: 'from-indigo-700 to-indigo-800',
+      tagHover: 'hover:from-indigo-600 hover:to-indigo-700'
+    }
+  ];
+
+  // Competitive Programming Platforms Data
+  const competitiveProgrammingPlatforms = [
+    {
+      id: 'leetcode',
+      name: 'LeetCode',
+      borderColor: 'border-purple-500/20',
+      decorativeColors: {
+        primary: 'bg-purple-500/10',
+        secondary: 'bg-pink-500/10'
+      },
+      logoGradient: 'from-orange-500 to-orange-600',
+      logoShadow: 'shadow-orange-500/30',
+      titleGradient: 'from-orange-400 via-pink-400 to-purple-400',
+      buttonGradient: 'from-orange-500 to-orange-600',
+      buttonHover: 'hover:from-orange-600 hover:to-orange-700',
+      buttonShadow: 'hover:shadow-orange-500/30',
+      profileUrl: 'https://leetcode.com/u/Pritam1293/',
+      logo: (
+        <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0z" />
+        </svg>
+      ),
+      stats: [
+        {
+          label: 'Current Rank',
+          value: 'Knight',
+          bgGradient: 'from-purple-900/40 to-purple-800/40',
+          borderColor: 'border-purple-500/30',
+          hoverBorder: 'hover:border-purple-400/50',
+          hoverShadow: 'hover:shadow-purple-500/20',
+          iconBg: 'bg-purple-500/20',
+          iconHoverBg: 'group-hover:bg-purple-500/30',
+          valueGradient: 'from-purple-400 to-pink-400',
+          icon: (
+            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          )
+        },
+        {
+          label: 'Problems Solved',
+          value: '500+',
+          bgGradient: 'from-emerald-900/40 to-emerald-800/40',
+          borderColor: 'border-emerald-500/30',
+          hoverBorder: 'hover:border-emerald-400/50',
+          hoverShadow: 'hover:shadow-emerald-500/20',
+          iconBg: 'bg-emerald-500/20',
+          iconHoverBg: 'group-hover:bg-emerald-500/30',
+          valueGradient: 'from-emerald-400 to-teal-400',
+          icon: (
+            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          )
+        },
+        {
+          label: 'Max Rating',
+          value: '2022',
+          bgGradient: 'from-orange-900/40 to-orange-800/40',
+          borderColor: 'border-orange-500/30',
+          hoverBorder: 'hover:border-orange-400/50',
+          hoverShadow: 'hover:shadow-orange-500/20',
+          iconBg: 'bg-orange-500/20',
+          iconHoverBg: 'group-hover:bg-orange-500/30',
+          valueGradient: 'from-orange-400 to-amber-400',
+          icon: (
+            <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" strokeWidth={2} />
+              <circle cx="12" cy="12" r="6" strokeWidth={2} />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+            </svg>
+          )
+        }
+      ]
+    },
+    {
+      id: 'codeforces',
+      name: 'Codeforces',
+      borderColor: 'border-blue-500/20',
+      decorativeColors: {
+        primary: 'bg-blue-500/10',
+        secondary: 'bg-cyan-500/10'
+      },
+      logoGradient: 'from-blue-500 to-cyan-600',
+      logoShadow: 'shadow-blue-500/30',
+      titleGradient: 'from-blue-400 via-cyan-400 to-blue-400',
+      buttonGradient: 'from-blue-500 to-cyan-600',
+      buttonHover: 'hover:from-blue-600 hover:to-cyan-700',
+      buttonShadow: 'hover:shadow-blue-500/30',
+      profileUrl: 'https://codeforces.com/profile/pritam1293',
+      logo: (
+        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5S3 20.328 3 19.5V9c0-.828.672-1.5 1.5-1.5zm15 0c.828 0 1.5.672 1.5 1.5v10.5c0 .828-.672 1.5-1.5 1.5S18 20.328 18 19.5V9c0-.828.672-1.5 1.5-1.5zM12 3c2.21 0 4 1.79 4 4v1h1.5c.828 0 1.5.672 1.5 1.5v11c0 .828-.672 1.5-1.5 1.5h-13C3.672 21 3 20.328 3 19.5v-11C3 7.672 3.672 7 4.5 7H6V7c0-2.21 1.79-4 4-4z" />
+        </svg>
+      ),
+      stats: [
+        {
+          label: 'Current Rank',
+          value: 'Specialist',
+          bgGradient: 'from-blue-900/40 to-blue-800/40',
+          borderColor: 'border-blue-500/30',
+          hoverBorder: 'hover:border-blue-400/50',
+          hoverShadow: 'hover:shadow-blue-500/20',
+          iconBg: 'bg-blue-500/20',
+          iconHoverBg: 'group-hover:bg-blue-500/30',
+          valueGradient: 'from-blue-400 to-cyan-400',
+          icon: (
+            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          )
+        },
+        {
+          label: 'Problems Solved',
+          value: '400+',
+          bgGradient: 'from-emerald-900/40 to-emerald-800/40',
+          borderColor: 'border-emerald-500/30',
+          hoverBorder: 'hover:border-emerald-400/50',
+          hoverShadow: 'hover:shadow-emerald-500/20',
+          iconBg: 'bg-emerald-500/20',
+          iconHoverBg: 'group-hover:bg-emerald-500/30',
+          valueGradient: 'from-emerald-400 to-teal-400',
+          icon: (
+            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          )
+        },
+        {
+          label: 'Max Rating',
+          value: '1479',
+          bgGradient: 'from-cyan-900/40 to-cyan-800/40',
+          borderColor: 'border-cyan-500/30',
+          hoverBorder: 'hover:border-cyan-400/50',
+          hoverShadow: 'hover:shadow-cyan-500/20',
+          iconBg: 'bg-cyan-500/20',
+          iconHoverBg: 'group-hover:bg-cyan-500/30',
+          valueGradient: 'from-cyan-400 to-blue-400',
+          icon: (
+            <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" strokeWidth={2} />
+              <circle cx="12" cy="12" r="6" strokeWidth={2} />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+            </svg>
+          )
+        }
+      ]
+    },
+    {
+      id: 'codechef',
+      name: 'CodeChef',
+      borderColor: 'border-yellow-500/20',
+      decorativeColors: {
+        primary: 'bg-yellow-500/10',
+        secondary: 'bg-orange-500/10'
+      },
+      logoGradient: 'from-yellow-500 to-orange-600',
+      logoShadow: 'shadow-yellow-500/30',
+      titleGradient: 'from-yellow-400 via-orange-400 to-red-400',
+      buttonGradient: 'from-yellow-500 to-orange-600',
+      buttonHover: 'hover:from-yellow-600 hover:to-orange-700',
+      buttonShadow: 'hover:shadow-yellow-500/30',
+      profileUrl: 'https://www.codechef.com/users/pritam1293',
+      logo: (
+        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.41 0 8 3.59 8 8 0 1.85-.63 3.55-1.69 4.9z" />
+        </svg>
+      ),
+      stats: [
+        {
+          label: 'Current Rank',
+          value: '⭐⭐⭐',
+          bgGradient: 'from-yellow-900/40 to-yellow-800/40',
+          borderColor: 'border-yellow-500/30',
+          hoverBorder: 'hover:border-yellow-400/50',
+          hoverShadow: 'hover:shadow-yellow-500/20',
+          iconBg: 'bg-yellow-500/20',
+          iconHoverBg: 'group-hover:bg-yellow-500/30',
+          valueGradient: 'from-yellow-400 to-orange-400',
+          icon: (
+            <svg className="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          )
+        },
+        {
+          label: 'Problems Solved',
+          value: '150+',
+          bgGradient: 'from-emerald-900/40 to-emerald-800/40',
+          borderColor: 'border-emerald-500/30',
+          hoverBorder: 'hover:border-emerald-400/50',
+          hoverShadow: 'hover:shadow-emerald-500/20',
+          iconBg: 'bg-emerald-500/20',
+          iconHoverBg: 'group-hover:bg-emerald-500/30',
+          valueGradient: 'from-emerald-400 to-teal-400',
+          icon: (
+            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          )
+        },
+        {
+          label: 'Max Rating',
+          value: '1737',
+          bgGradient: 'from-orange-900/40 to-orange-800/40',
+          borderColor: 'border-orange-500/30',
+          hoverBorder: 'hover:border-orange-400/50',
+          hoverShadow: 'hover:shadow-orange-500/20',
+          iconBg: 'bg-orange-500/20',
+          iconHoverBg: 'group-hover:bg-orange-500/30',
+          valueGradient: 'from-orange-400 to-red-400',
+          icon: (
+            <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" strokeWidth={2} />
+              <circle cx="12" cy="12" r="6" strokeWidth={2} />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+            </svg>
+          )
+        }
+      ]
+    },
+    {
+      id: 'atcoder',
+      name: 'AtCoder',
+      borderColor: 'border-indigo-500/20',
+      decorativeColors: {
+        primary: 'bg-indigo-500/10',
+        secondary: 'bg-purple-500/10'
+      },
+      logoGradient: 'from-indigo-500 to-purple-600',
+      logoShadow: 'shadow-indigo-500/30',
+      titleGradient: 'from-indigo-400 via-purple-400 to-pink-400',
+      buttonGradient: 'from-indigo-500 to-purple-600',
+      buttonHover: 'hover:from-indigo-600 hover:to-purple-700',
+      buttonShadow: 'hover:shadow-indigo-500/30',
+      profileUrl: 'https://atcoder.jp/users/pritam1293',
+      logo: (
+        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2L1 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-11-5z" />
+        </svg>
+      ),
+      stats: [
+        {
+          label: 'Current Rank',
+          value: '6 Kyu',
+          bgGradient: 'from-indigo-900/40 to-indigo-800/40',
+          borderColor: 'border-indigo-500/30',
+          hoverBorder: 'hover:border-indigo-400/50',
+          hoverShadow: 'hover:shadow-indigo-500/20',
+          iconBg: 'bg-indigo-500/20',
+          iconHoverBg: 'group-hover:bg-indigo-500/30',
+          valueGradient: 'from-indigo-400 to-purple-400',
+          icon: (
+            <svg className="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          )
+        },
+        {
+          label: 'Problems Solved',
+          value: '100+',
+          bgGradient: 'from-emerald-900/40 to-emerald-800/40',
+          borderColor: 'border-emerald-500/30',
+          hoverBorder: 'hover:border-emerald-400/50',
+          hoverShadow: 'hover:shadow-emerald-500/20',
+          iconBg: 'bg-emerald-500/20',
+          iconHoverBg: 'group-hover:bg-emerald-500/30',
+          valueGradient: 'from-emerald-400 to-teal-400',
+          icon: (
+            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          )
+        },
+        {
+          label: 'Max Rating',
+          value: '800+',
+          bgGradient: 'from-purple-900/40 to-purple-800/40',
+          borderColor: 'border-purple-500/30',
+          hoverBorder: 'hover:border-purple-400/50',
+          hoverShadow: 'hover:shadow-purple-500/20',
+          iconBg: 'bg-purple-500/20',
+          iconHoverBg: 'group-hover:bg-purple-500/30',
+          valueGradient: 'from-purple-400 to-pink-400',
+          icon: (
+            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" strokeWidth={2} />
+              <circle cx="12" cy="12" r="6" strokeWidth={2} />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+            </svg>
+          )
+        }
+      ]
+    }
+  ];
+
+  // Refs for each section
+  const heroRef = useRef();
+  const storyRef = useRef();
+  const skillsRef = useRef();
+  const cpRef = useRef();
+
+  useEffect(() => {
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections(prev => new Set([...prev, entry.target.id]));
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of element is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element is fully visible
+      }
+    );
+
+    // Observe all sections
+    const sections = [heroRef.current, storyRef.current, skillsRef.current, cpRef.current];
+    sections.forEach(section => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach(section => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, []);
+
+  // Helper function to check if section is visible
+  const isVisible = (sectionId) => visibleSections.has(sectionId);
+
   return (
     <div style={{
       paddingTop: '96px',
@@ -12,432 +484,276 @@ const About = () => {
         margin: '0 auto'
       }}>
 
-        {/* About Hero Section */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '60px'
-        }}>
-          <h1 style={{
-            fontSize: '3.5rem',
-            fontWeight: 'bold',
-            color: '#FAFAFA',
-            marginBottom: '1rem'
-          }}>
-            About Me
-          </h1>
-          <div style={{
-            width: '80px',
-            height: '4px',
-            background: 'linear-gradient(135deg, #5D27BE, #8B6953)',
-            margin: '0 auto 2rem auto',
-            borderRadius: '2px'
-          }}></div>
-          <p style={{
-            fontSize: '1.2rem',
-            color: '#B9AFBB',
-            maxWidth: '600px',
-            margin: '0 auto',
-            lineHeight: '1.6'
-          }}>
-            I'm a passionate developer who loves creating digital experiences that make a difference.
-            Here's my story and what drives me every day.
-          </p>
-        </div>
-
-        {/* Personal Story Section */}
-        <div style={{
-          display: 'flex',
-          gap: '60px',
-          alignItems: 'center',
-          marginBottom: '80px',
-          flexWrap: 'wrap'
-        }}>
-          {/* Text Content */}
-          <div style={{ flex: '1', minWidth: '400px' }}>
-            <h2 style={{
-              fontSize: '2.5rem',
-              color: '#FAFAFA',
-              marginBottom: '1.5rem'
-            }}>
-              My Journey
-            </h2>
-            <p style={{
-              fontSize: '1.1rem',
-              color: '#B9AFBB',
-              lineHeight: '1.7',
-              marginBottom: '1.5rem'
-            }}>
-              I'm currently in my final year of B.Tech at NIT Rourkela, where my passion
-              for technology and problem-solving has led me deep into the world of software
-              development. What started as curiosity about how things work has evolved into
-              a genuine love for creating digital solutions.
-            </p>
-            <p style={{
-              fontSize: '1.1rem',
-              color: '#B9AFBB',
-              lineHeight: '1.7',
-              marginBottom: '1.5rem'
-            }}>
-              My journey spans from foundational programming languages like C++ and Java
-              to modern web technologies like React and Spring Boot. I believe in building
-              robust, user-friendly applications that solve real-world problems.
-            </p>
-            <p style={{
-              fontSize: '1.1rem',
-              color: '#B9AFBB',
-              lineHeight: '1.7'
-            }}>
-              When I'm not coding, you'll find me on the cricket field, following football
-              matches, or getting excited about tennis during Wimbledon season. I'm also a
-              huge fan of fantasy and sci-fi movies - there's something magical about stories
-              that push the boundaries of imagination!
+        {/* About Me Section */}
+        <div
+          ref={heroRef}
+          id="hero"
+          style={{ marginBottom: '80px' }}
+          className={`scroll-animate ${isVisible('hero') ? 'animate-fadeInUp' : ''}`}
+        >
+          {/* Hero Section */}
+          <div className="text-center mb-20">
+            <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+              About Me
+            </h1>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full mx-auto mb-8 shadow-lg shadow-purple-500/50"></div>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              I'm a passionate developer who loves creating digital experiences that make a difference.
+              <br />
+              <span className="text-slate-400">Here's my story and what drives me every day.</span>
             </p>
           </div>
 
-          {/* Quick Stats */}
-          <div style={{ flex: '0 0 300px' }}>
-            <div style={{
-              background: 'rgba(93, 39, 190, 0.1)',
-              borderRadius: '16px',
-              padding: '2rem',
-              border: '1px solid rgba(93, 39, 190, 0.2)'
-            }}>
-              <h3 style={{
-                color: '#5D27BE',
-                fontSize: '1.5rem',
-                marginBottom: '1.5rem',
-                textAlign: 'center'
-              }}>
-                Quick Stats
-              </h3>
+          {/* Main Content Section */}
+          <div
+            ref={storyRef}
+            id="story"
+            className={`flex flex-col lg:flex-row gap-12 items-start scroll-animate ${isVisible('story') ? 'animate-slideInLeft animate-delay-200' : ''}`}
+          >
 
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ color: '#FAFAFA', fontSize: '2rem', fontWeight: 'bold' }}>Final Year</div>
-                <div style={{ color: '#B9AFBB' }}>B.Tech at NIT Rourkela</div>
-              </div>
+            {/* Journey Text Content */}
+            <div className="flex-1 space-y-6">
+              <div className="relative">
+                {/* Decorative line */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-orange-500 rounded-full"></div>
 
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ color: '#FAFAFA', fontSize: '2rem', fontWeight: 'bold' }}>9+</div>
-                <div style={{ color: '#B9AFBB' }}>Technologies Mastered</div>
-              </div>
+                <div className="pl-8">
+                  <h2 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
+                    <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      My Journey
+                    </span>
+                    <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </h2>
 
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ color: '#FAFAFA', fontSize: '2rem', fontWeight: 'bold' }}>3</div>
-                <div style={{ color: '#B9AFBB' }}>Favorite Sports</div>
-              </div>
+                  <div className="space-y-6">
+                    {journeyParagraphs.map((para, index) => (
+                      <div key={index} className="group">
+                        <p className="text-lg text-slate-300 leading-relaxed relative pl-6 transition-all duration-300 hover:text-white">
+                          {/* Bullet point */}
+                          <span className="absolute left-0 top-2 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full group-hover:scale-150 transition-transform"></span>
+                          {para}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
 
-              <div>
-                <div style={{ color: '#FAFAFA', fontSize: '2rem', fontWeight: 'bold' }}>∞</div>
-                <div style={{ color: '#B9AFBB' }}>Sci-Fi Movies Watched</div>
+                  {/* Call to action or highlight */}
+                  <div className="mt-8 p-6 bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-2xl border border-purple-500/30">
+                    <p className="text-slate-300 italic flex items-center gap-3">
+                      <svg className="w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
+                      <span className="text-lg">
+                        "Always learning, always building, always pushing boundaries."
+                      </span>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* Quick Profile Card */}
+            <div className="lg:w-96 w-full">
+              <div className="sticky top-8 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8 border border-purple-500/30 shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 overflow-hidden">
+
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/10 rounded-full blur-3xl"></div>
+
+                <div className="relative z-10">
+                  {/* Header */}
+                  <div className="text-center mb-8">
+                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-purple-500/30">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      Quick Profile
+                    </h3>
+                  </div>
+
+                  {/* Stats */}
+                  <div className="space-y-4">
+                    {profileStats.map((stat, index) => (
+                      <div
+                        key={stat.id}
+                        className="group bg-gradient-to-r from-slate-700/40 to-slate-800/40 rounded-2xl p-5 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-300 hover:scale-105"
+                      >
+                        <div className="flex items-start gap-4">
+                          {/* Icon */}
+                          <div className={`bg-gradient-to-br ${stat.gradient} p-3 rounded-xl shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                            <div className="text-white">
+                              {stat.icon}
+                            </div>
+                          </div>
+
+                          {/* Content */}
+                          <div className="flex-1 min-w-0">
+                            <div className={`text-2xl font-bold mb-1 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
+                              {stat.number}
+                            </div>
+                            <div className="text-slate-300 text-sm font-medium leading-tight">
+                              {stat.description}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         {/* Technical Skills Section */}
-        <div style={{ marginBottom: '80px' }}>
-          <h2 style={{
-            fontSize: '2.5rem',
-            color: '#FAFAFA',
-            marginBottom: '3rem',
-            textAlign: 'center'
-          }}>
+        <div
+          ref={skillsRef}
+          id="skills"
+          style={{ marginBottom: '80px' }}
+          className={`scroll-animate ${isVisible('skills') ? 'animate-popIn animate-delay-200' : ''}`}
+        >
+          {/* Section Title */}
+          <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
             Technical Skills
           </h2>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem'
-          }}>
-            {/* Programming Languages */}
-            <div style={{
-              background: 'rgba(139, 105, 83, 0.1)',
-              borderRadius: '16px',
-              padding: '2rem',
-              border: '1px solid rgba(139, 105, 83, 0.2)'
-            }}>
-              <h3 style={{
-                color: '#8B6953',
-                fontSize: '1.5rem',
-                marginBottom: '1.5rem'
-              }}>
-                Programming Languages
-              </h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {['C++', 'Java'].map(skill => (
-                  <span key={skill} style={{
-                    background: 'rgba(139, 105, 83, 0.2)',
-                    color: '#FAFAFA',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '20px',
-                    fontSize: '0.9rem'
-                  }}>
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+          {/* Skills Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {skillsData.map((category) => (
+              <div
+                key={category.id}
+                className={`group bg-gradient-to-br ${category.gradient} backdrop-blur-xl rounded-3xl p-6 border ${category.borderColor} ${category.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-xl ${category.hoverShadow} relative overflow-hidden`}
+              >
+                {/* Decorative glow effect */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
 
-            {/* Frontend */}
-            <div style={{
-              background: 'rgba(93, 39, 190, 0.1)',
-              borderRadius: '16px',
-              padding: '2rem',
-              border: '1px solid rgba(93, 39, 190, 0.2)'
-            }}>
-              <h3 style={{
-                color: '#5D27BE',
-                fontSize: '1.5rem',
-                marginBottom: '1.5rem'
-              }}>
-                Frontend Technologies
-              </h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {['React', 'HTML', 'CSS', 'Tailwind'].map(skill => (
-                  <span key={skill} style={{
-                    background: 'rgba(93, 39, 190, 0.2)',
-                    color: '#FAFAFA',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '20px',
-                    fontSize: '0.9rem'
-                  }}>
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+                <div className="relative z-10">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className={`${category.iconBg} ${category.iconHoverBg} p-2.5 rounded-xl transition-colors ${category.iconColor}`}>
+                      {category.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">
+                      {category.title}
+                    </h3>
+                  </div>
 
-            {/* Backend & Tools */}
-            <div style={{
-              background: 'rgba(185, 175, 187, 0.1)',
-              borderRadius: '16px',
-              padding: '2rem',
-              border: '1px solid rgba(185, 175, 187, 0.2)'
-            }}>
-              <h3 style={{
-                color: '#B9AFBB',
-                fontSize: '1.5rem',
-                marginBottom: '1.5rem'
-              }}>
-                Backend & Tools
-              </h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {['Spring Boot', 'Git', 'GitHub'].map(skill => (
-                  <span key={skill} style={{
-                    background: 'rgba(185, 175, 187, 0.2)',
-                    color: '#FAFAFA',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '20px',
-                    fontSize: '0.9rem'
-                  }}>
-                    {skill}
-                  </span>
-                ))}
+                  {/* Skills Tags */}
+                  <div className="flex flex-wrap gap-2.5">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className={`px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r ${category.tagGradient} ${category.tagHover} transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Summary */}
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl px-6 py-3 border border-purple-500/20">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-slate-300 text-sm">Constantly learning & exploring new technologies</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Competitive Programming Section */}
-        <div style={{ marginBottom: '80px' }}>
+        <div
+          ref={cpRef}
+          id="cp"
+          style={{ marginBottom: '80px' }}
+          className={`scroll-animate ${isVisible('cp') ? 'animate-bounceIn animate-delay-400' : ''}`}
+        >
           <h2 style={{
-            fontSize: '2.5rem',
+            fontSize: '3rem',
+            fontWeight: 'bold',
             color: '#FAFAFA',
-            marginBottom: '1rem',
+            marginBottom: '3rem',
             textAlign: 'center'
           }}>
             Competitive Programming
           </h2>
-          <div style={{
-            width: '80px',
-            height: '4px',
-            background: 'linear-gradient(135deg, #5D27BE, #8B6953)',
-            margin: '0 auto 3rem auto',
-            borderRadius: '2px'
-          }}></div>
 
-          {/* Achievement Highlight */}
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(93, 39, 190, 0.2), rgba(139, 105, 83, 0.2))',
-            borderRadius: '16px',
-            padding: '2rem',
-            marginBottom: '3rem',
-            textAlign: 'center',
-            border: '2px solid rgba(93, 39, 190, 0.3)'
-          }}>
-            <div style={{
-              color: '#5D27BE',
-              fontSize: '1.3rem',
-              fontWeight: 'bold',
-              marginBottom: '0.5rem'
-            }}>
-              🏆 Top Achievement
-            </div>
-            <div style={{
-              color: '#FAFAFA',
-              fontSize: '2rem',
-              fontWeight: 'bold',
-              marginBottom: '0.5rem'
-            }}>
-              LeetCode Knight Badge
-            </div>
-            <div style={{ color: '#B9AFBB', fontSize: '1.1rem' }}>
-              Top 2.22% of all users globally
-            </div>
-          </div>
+          {/* Competitive Programming Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {competitiveProgrammingPlatforms.map((platform) => (
+              <div key={platform.id} className="w-full">
+                <div className={`bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border ${platform.borderColor} relative overflow-hidden`}>
 
-          {/* Platform Stats Grid - Refactored */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '2rem',
-            marginBottom: '3rem'
-          }}>
-            {(() => {
-              // Platform data array
-              const platforms = [
-                {
-                  name: 'LeetCode 🗡️',
-                  rating: '2022',
-                  subtitle: 'Max Rating',
-                  badge: 'Knight Badge',
-                  color: '#5D27BE',
-                  link: 'https://leetcode.com/u/Pritam1293/'
-                },
-                {
-                  name: 'CodeChef 👨‍🍳',
-                  rating: '1737',
-                  subtitle: 'Max Rating',
-                  badge: '3⭐ Star',
-                  color: '#8B6953',
-                  link: 'https://www.codechef.com/users/pritam1293'
-                },
-                {
-                  name: 'Codeforces 🚀',
-                  rating: '1479',
-                  subtitle: 'Max Rating',
-                  badge: 'Specialist',
-                  color: '#B9AFBB',
-                  link: 'https://codeforces.com/profile/pritam1293'
-                },
-                {
-                  name: 'AtCoder 🎌',
-                  rating: '885',
-                  subtitle: 'Rating',
-                  badge: '6 Kyu',
-                  color: '#5D27BE',
-                  link: 'https://atcoder.jp/users/pritam1293'
-                }
-              ];
+                  {/* Decorative background elements */}
+                  <div className={`absolute top-0 right-0 w-28 h-28 ${platform.decorativeColors.primary} rounded-full blur-3xl`}></div>
+                  <div className={`absolute bottom-0 left-0 w-24 h-24 ${platform.decorativeColors.secondary} rounded-full blur-3xl`}></div>
 
-              // Reusable card component function
-              const createPlatformCard = (platform) => (
-                <div
-                  key={platform.name}
-                  style={{
-                    background: `rgba(${hexToRgb(platform.color)}, 0.1)`,
-                    borderRadius: '16px',
-                    padding: '2rem',
-                    border: `1px solid rgba(${hexToRgb(platform.color)}, 0.2)`,
-                    textAlign: 'center'
-                  }}
-                >
-                  <div style={{
-                    color: platform.color,
-                    fontSize: '1.3rem',
-                    fontWeight: 'bold',
-                    marginBottom: '1rem'
-                  }}>
-                    {platform.name}
-                  </div>
-                  <div style={{ color: '#FAFAFA', fontSize: '2.5rem', fontWeight: 'bold' }}>
-                    {platform.rating}
-                  </div>
-                  <div style={{ color: '#B9AFBB', marginBottom: '0.5rem' }}>
-                    {platform.subtitle}
-                  </div>
-                  <div style={{
-                    background: `rgba(${hexToRgb(platform.color)}, 0.3)`,
-                    color: '#FAFAFA',
-                    padding: '0.3rem 0.8rem',
-                    borderRadius: '12px',
-                    fontSize: '0.9rem',
-                    display: 'inline-block',
-                    marginBottom: '1rem'
-                  }}>
-                    {platform.badge}
-                  </div>
-                  <div>
-                    <a
-                      href={platform.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        color: platform.color,
-                        textDecoration: 'none',
-                        fontSize: '0.9rem',
-                        fontWeight: '500',
-                        padding: '0.5rem 1rem',
-                        border: `1px solid ${platform.color}`,
-                        borderRadius: '8px',
-                        transition: 'all 0.3s ease',
-                        display: 'inline-block'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = platform.color;
-                        e.target.style.color = '#FAFAFA';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'transparent';
-                        e.target.style.color = platform.color;
-                      }}
-                    >
-                      View Profile →
-                    </a>
+                  <div className="relative z-10">
+                    {/* Header with Logo */}
+                    <div className="flex items-center justify-center mb-6">
+                      <div className={`bg-gradient-to-br ${platform.logoGradient} p-2.5 rounded-xl shadow-lg ${platform.logoShadow}`}>
+                        {platform.logo}
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h2 className={`text-3xl font-bold text-center mb-6 bg-gradient-to-r ${platform.titleGradient} bg-clip-text text-transparent`}>
+                      {platform.name}
+                    </h2>
+
+                    {/* Stats Grid */}
+                    <div className="space-y-3">
+                      {platform.stats.map((stat, index) => (
+                        <div key={index} className={`group bg-gradient-to-r ${stat.bgGradient} rounded-xl p-4 border ${stat.borderColor} ${stat.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-lg ${stat.hoverShadow}`}>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className={`${stat.iconBg} p-2.5 rounded-xl ${stat.iconHoverBg} transition-colors`}>
+                                {stat.icon}
+                              </div>
+                              <span className="text-slate-200 font-medium text-lg">{stat.label}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className={`text-3xl font-bold bg-gradient-to-r ${stat.valueGradient} bg-clip-text text-transparent`}>
+                                {stat.value}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Profile Link Button */}
+                    <div className="mt-6">
+                      <a
+                        href={platform.profileUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`w-full bg-gradient-to-r ${platform.buttonGradient} ${platform.buttonHover} text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg ${platform.buttonShadow} flex items-center justify-center gap-2 group`}
+                      >
+                        <span>Visit Profile</span>
+                        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              );
-
-              // Helper function to convert hex to RGB
-              function hexToRgb(hex) {
-                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-                if (result) {
-                  return `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`;
-                }
-                return '93, 39, 190'; // fallback
-              }
-
-              // Return all platform cards
-              return platforms.map(createPlatformCard);
-            })()}
+              </div>
+            ))}
           </div>
 
-          {/* Summary Stats */}
-          <div style={{
-            background: 'rgba(250, 250, 252, 0.05)',
-            borderRadius: '16px',
-            padding: '2rem',
-            textAlign: 'center'
-          }}>
-            <div style={{
-              color: '#FAFAFA',
-              fontSize: '3rem',
-              fontWeight: 'bold',
-              marginBottom: '0.5rem'
-            }}>
-              1200+
-            </div>
-            <p style={{ color: '#B9AFBB', fontSize: '1.2rem' }}>
-              Problems Solved Across All Platforms
-              <br />
-              (Platforms include LeetCode, CodeChef, Codeforces, AtCoder, InterviewBit, GeeksforGeeks)
-            </p>
-          </div>
         </div>
-
         {/* Content will go here */}
-
       </div>
     </div>
   )
