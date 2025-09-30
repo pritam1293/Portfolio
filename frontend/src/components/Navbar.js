@@ -51,12 +51,12 @@ const Navbar = () => {
                                     onMouseLeave={() => setHoveredLink(null)}
                                     style={{
                                         fontSize: '20px',
-                                        color: isActive ? '#5D27BE' : (isHovered ? '#B9AFBB' : '#FAFAFA'),
+                                        color: isActive ? '#6A6B1A' : (isHovered ? '#F9AFBB' : '#FFFFFF'),
                                         textDecoration: 'none',
                                         transition: 'color 0.2s ease',
                                         cursor: 'pointer',
                                         fontWeight: isActive ? 'bold' : 'normal',
-                                        borderBottom: isActive ? '2px solid #5D27BE' : '2px solid transparent',
+                                        borderBottom: isActive ? '2px solid #' : '2px solid transparent',
                                         paddingBottom: '4px',
                                         display: 'inline-block'
                                     }}>
