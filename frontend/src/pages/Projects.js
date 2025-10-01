@@ -251,7 +251,7 @@ const Projects = () => {
           }`}>
           <div className="bg-gradient-to-r from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl px-8 py-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 max-w-3xl mx-auto">
             <p className="text-slate-300 leading-relaxed text-lg mb-4">
-              These are my two flagship projects that showcase full-stack development at scale. 
+              These are my two flagship projects that showcase full-stack development at scale.
               <br />
               I've built several other interesting projects ranging from smaller utilities to experimental applications.
             </p>
