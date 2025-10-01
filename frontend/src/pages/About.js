@@ -3,6 +3,36 @@ import React, { useState, useEffect, useRef } from 'react'
 const About = () => {
   const [visibleSections, setVisibleSections] = useState(new Set());
 
+  // Consolidated animation state for all sections
+  const [animations, setAnimations] = useState({
+    journey: {
+      title: false,
+      para1: false,
+      para2: false,
+      para3: false,
+      quote: false
+    },
+    profile: {
+      header: false,
+      stat1: false,
+      stat2: false,
+      stat3: false,
+      stat4: false
+    },
+    skills: {
+      skill1: false,
+      skill2: false,
+      skill3: false,
+      skill4: false
+    },
+    cp: {
+      cp1: false,
+      cp2: false,
+      cp3: false,
+      cp4: false
+    }
+  });
+
   const journeyParagraphs = [
     "I'm currently in my final year of B.Tech at NIT Rourkela, where my passion for technology and problem-solving has led me deep into the world of software development. What started as curiosity about how things work has evolved into a genuine love for creating digital solutions.",
 
@@ -441,6 +471,18 @@ const About = () => {
   const skillsRef = useRef();
   const cpRef = useRef();
 
+  // Helper function to trigger staggered animations
+  const triggerStaggeredAnimation = (section, animationKeys) => {
+    animationKeys.forEach(({ key, delay }) => {
+      setTimeout(() => {
+        setAnimations(prev => ({
+          ...prev,
+          [section]: { ...prev[section], [key]: true }
+        }));
+      }, delay);
+    });
+  };
+
   useEffect(() => {
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
@@ -448,6 +490,45 @@ const About = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisibleSections(prev => new Set([...prev, entry.target.id]));
+
+            // Trigger staggered animations for Journey section
+            if (entry.target.id === 'story') {
+              triggerStaggeredAnimation('journey', [
+                { key: 'title', delay: 200 },
+                { key: 'para1', delay: 400 },
+                { key: 'para2', delay: 600 },
+                { key: 'para3', delay: 800 },
+                { key: 'quote', delay: 1000 }
+              ]);
+
+              triggerStaggeredAnimation('profile', [
+                { key: 'header', delay: 300 },
+                { key: 'stat1', delay: 500 },
+                { key: 'stat2', delay: 700 },
+                { key: 'stat3', delay: 900 },
+                { key: 'stat4', delay: 1100 }
+              ]);
+            }
+
+            // Trigger staggered animations for Skills section
+            if (entry.target.id === 'skills') {
+              triggerStaggeredAnimation('skills', [
+                { key: 'skill1', delay: 200 },
+                { key: 'skill2', delay: 350 },
+                { key: 'skill3', delay: 500 },
+                { key: 'skill4', delay: 650 }
+              ]);
+            }
+
+            // Trigger staggered animations for Competitive Programming section
+            if (entry.target.id === 'cp') {
+              triggerStaggeredAnimation('cp', [
+                { key: 'cp1', delay: 200 },
+                { key: 'cp2', delay: 350 },
+                { key: 'cp3', delay: 500 },
+                { key: 'cp4', delay: 650 }
+              ]);
+            }
           }
         });
       },
@@ -518,7 +599,8 @@ const About = () => {
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-orange-500 rounded-full"></div>
 
                 <div className="pl-8">
-                  <h2 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
+                  <h2 className={`text-4xl font-bold text-white mb-8 flex items-center gap-3 transition-all duration-700 transform ${animations.journey.title ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+                    }`}>
                     <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                       My Journey
                     </span>
@@ -528,19 +610,24 @@ const About = () => {
                   </h2>
 
                   <div className="space-y-6">
-                    {journeyParagraphs.map((para, index) => (
-                      <div key={index} className="group">
-                        <p className="text-lg text-slate-300 leading-relaxed relative pl-6 transition-all duration-300 hover:text-white">
-                          {/* Bullet point */}
-                          <span className="absolute left-0 top-2 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full group-hover:scale-150 transition-transform"></span>
-                          {para}
-                        </p>
-                      </div>
-                    ))}
+                    {journeyParagraphs.map((para, index) => {
+                      const animKey = `para${index + 1}`;
+                      return (
+                        <div key={index} className={`group transition-all duration-700 transform ${animations.journey[animKey] ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+                          }`}>
+                          <p className="text-lg text-slate-300 leading-relaxed relative pl-6 transition-all duration-300 hover:text-white">
+                            {/* Bullet point */}
+                            <span className="absolute left-0 top-2 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full group-hover:scale-150 transition-transform"></span>
+                            {para}
+                          </p>
+                        </div>
+                      )
+                    })}
                   </div>
 
                   {/* Call to action or highlight */}
-                  <div className="mt-8 p-6 bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-2xl border border-purple-500/30">
+                  <div className={`mt-8 p-6 bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-2xl border border-purple-500/30 transition-all duration-700 transform ${animations.journey.quote ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+                    }`}>
                     <p className="text-slate-300 italic flex items-center gap-3">
                       <svg className="w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -564,7 +651,8 @@ const About = () => {
 
                 <div className="relative z-10">
                   {/* Header */}
-                  <div className="text-center mb-8">
+                  <div className={`text-center mb-8 transition-all duration-700 transform ${animations.profile.header ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
+                    }`}>
                     <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-purple-500/30">
                       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -577,31 +665,35 @@ const About = () => {
 
                   {/* Stats */}
                   <div className="space-y-4">
-                    {profileStats.map((stat, index) => (
-                      <div
-                        key={stat.id}
-                        className="group bg-gradient-to-r from-slate-700/40 to-slate-800/40 rounded-2xl p-5 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-300 hover:scale-105"
-                      >
-                        <div className="flex items-start gap-4">
-                          {/* Icon */}
-                          <div className={`bg-gradient-to-br ${stat.gradient} p-3 rounded-xl shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
-                            <div className="text-white">
-                              {stat.icon}
+                    {profileStats.map((stat, index) => {
+                      const animKey = `stat${index + 1}`;
+                      return (
+                        <div
+                          key={stat.id}
+                          className={`group bg-gradient-to-r from-slate-700/40 to-slate-800/40 rounded-2xl p-5 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-700 hover:scale-105 transform ${animations.profile[animKey] ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
+                            }`}
+                        >
+                          <div className="flex items-start gap-4">
+                            {/* Icon */}
+                            <div className={`bg-gradient-to-br ${stat.gradient} p-3 rounded-xl shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                              <div className="text-white">
+                                {stat.icon}
+                              </div>
                             </div>
-                          </div>
 
-                          {/* Content */}
-                          <div className="flex-1 min-w-0">
-                            <div className={`text-2xl font-bold mb-1 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
-                              {stat.number}
-                            </div>
-                            <div className="text-slate-300 text-sm font-medium leading-tight">
-                              {stat.description}
+                            {/* Content */}
+                            <div className="flex-1 min-w-0">
+                              <div className={`text-2xl font-bold mb-1 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
+                                {stat.number}
+                              </div>
+                              <div className="text-slate-300 text-sm font-medium leading-tight">
+                                {stat.description}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      )
+                    })}
                   </div>
 
                 </div>
@@ -625,39 +717,42 @@ const About = () => {
 
           {/* Skills Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {skillsData.map((category) => (
-              <div
-                key={category.id}
-                className={`group bg-gradient-to-br ${category.gradient} backdrop-blur-xl rounded-3xl p-6 border ${category.borderColor} ${category.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-xl ${category.hoverShadow} relative overflow-hidden`}
-              >
-                {/* Decorative glow effect */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+            {skillsData.map((category, index) => {
+              const animKey = `skill${index + 1}`;
+              return (
+                <div
+                  key={category.id}
+                  className={`group bg-gradient-to-br ${category.gradient} backdrop-blur-xl rounded-3xl p-6 border ${category.borderColor} ${category.hoverBorder} transition-all duration-500 hover:scale-105 hover:shadow-xl ${category.hoverShadow} relative overflow-hidden transform ${animations.skills[animKey] ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}
+                >
+                  {/* Decorative glow effect */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
 
-                <div className="relative z-10">
-                  {/* Header */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className={`${category.iconBg} ${category.iconHoverBg} p-2.5 rounded-xl transition-colors ${category.iconColor}`}>
-                      {category.icon}
+                  <div className="relative z-10">
+                    {/* Header */}
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className={`${category.iconBg} ${category.iconHoverBg} p-2.5 rounded-xl transition-colors ${category.iconColor}`}>
+                        {category.icon}
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">
+                        {category.title}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-bold text-white">
-                      {category.title}
-                    </h3>
-                  </div>
 
-                  {/* Skills Tags */}
-                  <div className="flex flex-wrap gap-2.5">
-                    {category.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className={`px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r ${category.tagGradient} ${category.tagHover} transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105`}
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                    {/* Skills Tags */}
+                    <div className="flex flex-wrap gap-2.5">
+                      {category.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className={`px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r ${category.tagGradient} ${category.tagHover} transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105`}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Summary */}
@@ -690,66 +785,69 @@ const About = () => {
 
           {/* Competitive Programming Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {competitiveProgrammingPlatforms.map((platform) => (
-              <div key={platform.id} className="w-full">
-                <div className={`bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border ${platform.borderColor} relative overflow-hidden`}>
+            {competitiveProgrammingPlatforms.map((platform, index) => {
+              const animKey = `cp${index + 1}`;
+              return (
+                <div key={platform.id} className={`w-full transition-all duration-500 transform ${animations.cp[animKey] ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+                  <div className={`bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border ${platform.borderColor} relative overflow-hidden`}>
 
-                  {/* Decorative background elements */}
-                  <div className={`absolute top-0 right-0 w-28 h-28 ${platform.decorativeColors.primary} rounded-full blur-3xl`}></div>
-                  <div className={`absolute bottom-0 left-0 w-24 h-24 ${platform.decorativeColors.secondary} rounded-full blur-3xl`}></div>
+                    {/* Decorative background elements */}
+                    <div className={`absolute top-0 right-0 w-28 h-28 ${platform.decorativeColors.primary} rounded-full blur-3xl`}></div>
+                    <div className={`absolute bottom-0 left-0 w-24 h-24 ${platform.decorativeColors.secondary} rounded-full blur-3xl`}></div>
 
-                  <div className="relative z-10">
-                    {/* Header with Logo */}
-                    <div className="flex items-center justify-center mb-6">
-                      <div className={`bg-gradient-to-br ${platform.logoGradient} p-2.5 rounded-xl shadow-lg ${platform.logoShadow}`}>
-                        {platform.logo}
+                    <div className="relative z-10">
+                      {/* Header with Logo */}
+                      <div className="flex items-center justify-center mb-6">
+                        <div className={`bg-gradient-to-br ${platform.logoGradient} p-2.5 rounded-xl shadow-lg ${platform.logoShadow}`}>
+                          {platform.logo}
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Title */}
-                    <h2 className={`text-3xl font-bold text-center mb-6 bg-gradient-to-r ${platform.titleGradient} bg-clip-text text-transparent`}>
-                      {platform.name}
-                    </h2>
+                      {/* Title */}
+                      <h2 className={`text-3xl font-bold text-center mb-6 bg-gradient-to-r ${platform.titleGradient} bg-clip-text text-transparent`}>
+                        {platform.name}
+                      </h2>
 
-                    {/* Stats Grid */}
-                    <div className="space-y-3">
-                      {platform.stats.map((stat, index) => (
-                        <div key={index} className={`group bg-gradient-to-r ${stat.bgGradient} rounded-xl p-4 border ${stat.borderColor} ${stat.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-lg ${stat.hoverShadow}`}>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                              <div className={`${stat.iconBg} p-2.5 rounded-xl ${stat.iconHoverBg} transition-colors`}>
-                                {stat.icon}
+                      {/* Stats Grid */}
+                      <div className="space-y-3">
+                        {platform.stats.map((stat, index) => (
+                          <div key={index} className={`group bg-gradient-to-r ${stat.bgGradient} rounded-xl p-4 border ${stat.borderColor} ${stat.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-lg ${stat.hoverShadow}`}>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-3">
+                                <div className={`${stat.iconBg} p-2.5 rounded-xl ${stat.iconHoverBg} transition-colors`}>
+                                  {stat.icon}
+                                </div>
+                                <span className="text-slate-200 font-medium text-lg">{stat.label}</span>
                               </div>
-                              <span className="text-slate-200 font-medium text-lg">{stat.label}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className={`text-3xl font-bold bg-gradient-to-r ${stat.valueGradient} bg-clip-text text-transparent`}>
-                                {stat.value}
-                              </span>
+                              <div className="flex items-center gap-2">
+                                <span className={`text-3xl font-bold bg-gradient-to-r ${stat.valueGradient} bg-clip-text text-transparent`}>
+                                  {stat.value}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
+                        ))}
+                      </div>
 
-                    {/* Profile Link Button */}
-                    <div className="mt-6">
-                      <a
-                        href={platform.profileUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`w-full bg-gradient-to-r ${platform.buttonGradient} ${platform.buttonHover} text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg ${platform.buttonShadow} flex items-center justify-center gap-2 group`}
-                      >
-                        <span>Visit Profile</span>
-                        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
+                      {/* Profile Link Button */}
+                      <div className="mt-6">
+                        <a
+                          href={platform.profileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-full bg-gradient-to-r ${platform.buttonGradient} ${platform.buttonHover} text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg ${platform.buttonShadow} flex items-center justify-center gap-2 group`}
+                        >
+                          <span>Visit Profile</span>
+                          <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
         </div>
