@@ -1,10 +1,12 @@
 # 🚀 Personal Portfolio Website
 
-A modern, responsive portfolio website built with React.js showcasing my journey as a Full Stack Developer and competitive programmer.
+A modern, responsive portfolio website built with React.js and Tailwind CSS showcasing my journey as a Full Stack Developer and competitive programmer.
 
 ## 🌟 Live Demo
 
-[View Portfolio](https://pritam1293.github.io/Portfolio) _(Demo link, not working)_
+**🔗 [Visit Portfolio Website](https://portfolio-pritam-behera.vercel.app)**
+
+Deployed on Vercel with automatic CI/CD integration.
 
 ## 👨‍💻 About Me
 
@@ -64,32 +66,84 @@ Full Stack Developer & Competitive Programming Enthusiast
 ### 🏠 Home Page
 
 - **Hero Section** with professional layout
+- **Animated Background** with gradient blobs
 - **Side-by-side Design** (text left, profile image right)
-- **Profile Photo** with circular gradient background
-- **Call-to-Action Buttons** with hover animations
-- **Professional Introduction** and value proposition
+- **Profile Photo** with circular gradient border
+- **Call-to-Action Buttons** with navigation to Projects and Contact
+- **Social Media Links** with hover animations
+- **Staggered Entrance Animations** for all elements
 
 ### 📄 About Page
 
-- **Personal Journey** section with storytelling
-- **Technical Skills Showcase** with categorized cards
+- **Personal Journey** section with storytelling and animations
+- **Quick Profile Stats** with animated counters
+- **Technical Skills Showcase** with:
+  - Categorized skill cards (Frontend, Backend, Tools)
+  - Pop-up animations on scroll
+  - Visual skill icons
 - **Competitive Programming Section** with:
-  - Platform-wise statistics
-  - Achievement highlights
-  - Direct profile links
+  - Platform-wise statistics (LeetCode, CodeChef, Codeforces, AtCoder)
+  - Achievement highlights with logos
+  - Direct profile links with images
   - Visual rating displays
-- **Quick Stats Cards** with key metrics
-- **Data-Driven Rendering** for code reusability
+- **Intersection Observer** for scroll-triggered animations
+- **Staggered animations** for smooth UX
+
+### 💼 Projects Page
+
+- **Featured Projects Section** showcasing major work:
+  - **AlgoBoard**: Full-stack competitive programming analytics platform
+  - **Parking Lot Management**: Smart parking system with admin dashboard
+- **Project Cards** with:
+  - Tech stack badges
+  - Key highlights with metrics
+  - GitHub repository links
+  - Custom icons and gradients
+  - Alternating slide-in animations (left/right)
+- **Additional Projects** callout with GitHub repositories link
+- **Responsive Grid Layout** for all screen sizes
+
+### 📞 Contact Page
+
+- **Contact Information Cards** with:
+  - Email with mailto link
+  - Phone with tel link
+  - LinkedIn profile
+  - Custom icons and color-coded gradients
+- **Social Media Links** with:
+  - GitHub (@pritam1293)
+  - Instagram (@pritam\_\_085)
+  - X/Twitter (@Halandowski)
+  - Platform-specific icons
+  - Hover animations and effects
+- **Animated Entrance** with staggered delays
+- **Professional CTA** encouraging collaboration
 
 ### 🎯 Advanced React Patterns
 
-- **useState Hooks** for state management
-- **useEffect Hooks** for lifecycle management
-- **useLocation Hook** for active route detection
+- **useState Hooks** for state management across all pages
+- **useEffect Hooks** for lifecycle management and observers
+- **useLocation Hook** for active route detection in Navbar
+- **useNavigate Hook** for programmatic navigation
+- **useRef Hooks** for DOM element references
+- **Intersection Observer API** for scroll-triggered animations
 - **Custom Component Functions** for reusability
 - **Array Mapping** for dynamic content rendering
-- **Conditional Rendering** based on state
-- **Event Handling** for interactive elements
+- **Conditional Rendering** based on state and props
+- **Event Handling** for interactive elements and navigation
+- **Staggered Animations** with setTimeout patterns
+- **Helper Functions** for DRY code (triggerStaggeredAnimation)
+
+### 🎨 Animation Features
+
+- **Scroll-Triggered Animations** using Intersection Observer
+- **Staggered Entry Animations** for sequential element reveals
+- **Fade-in Effects** with opacity transitions
+- **Slide Animations** (left, right, up, down)
+- **Scale Transformations** for pop-up effects
+- **Hover Animations** on buttons, cards, and links
+- **Smooth Transitions** with 700ms duration consistency
+- **Background Gradient Animations** with pulse effects
 
 ## 📁 Project Structure
 
@@ -161,53 +215,83 @@ Portfolio/
 
 ### Color Palette
 
-- **Primary Background**: `#010106` (Almost pure black)
-- **Secondary Background**: `#212442` (Dark navy blue)
-- **Accent Color**: `#5D27BE` (Vibrant purple)
-- **Secondary Accent**: `#8B6953` (Muted brown/gold)
-- **Text Primary**: `#FAFAFA` (Near white)
-- **Text Secondary**: `#B9AFBB` (Soft gray)
+- **Background**: Gradient dark theme with slate-900, purple-900
+- **Primary Gradients**:
+  - Purple to Pink: `from-purple-400 via-pink-400 to-orange-400`
+  - Blue to Purple: `from-blue-400 via-purple-400 to-pink-400`
+- **Accent Colors**:
+  - Purple: `#8B5CF6` (purple-500)
+  - Pink: `#EC4899` (pink-500)
+  - Orange: `#F97316` (orange-500)
+  - Cyan: `#06B6D4` (cyan-500)
+- **Text Colors**:
+  - Primary: `#F8FAFC` (slate-100)
+  - Secondary: `#CBD5E1` (slate-300)
+  - Muted: `#94A3B8` (slate-400)
+- **Card Backgrounds**: Semi-transparent with backdrop blur
+  - Purple: `from-purple-900/40 to-purple-800/40`
+  - Cyan: `from-cyan-900/40 to-cyan-800/40`
+  - Slate: `from-slate-800/50 to-slate-900/50`
 
 ### Typography
 
-- **Font Family**: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto'
-- **Heading Sizes**: 4rem, 3.5rem, 2.5rem
-- **Body Text**: 1.1rem with 1.6-1.7 line height
+- **Font Family**: System fonts stack (-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto')
+- **Heading Sizes**:
+  - Hero: `text-7xl` (4.5rem)
+  - Section: `text-6xl` (3.75rem)
+  - Subsection: `text-3xl` (1.875rem)
+- **Body Text**: `text-xl` (1.25rem) with relaxed line height
+- **Font Weights**: Bold (700), Semibold (600), Medium (500), Regular (400), Light (300)
 
 ## 📱 Responsive Design
 
-- **Desktop**: Full sidebar layout with optimized spacing
-- **Tablet**: Stacked layout with maintained proportions
-- **Mobile**: Single column with touch-friendly navigation
+- **Desktop (lg)**: Multi-column grid layouts with optimal spacing
+- **Tablet (md)**: Stacked layouts with maintained card designs
+- **Mobile (sm)**: Single column with touch-friendly navigation
+- **Breakpoints**: Tailwind CSS standard breakpoints
+  - sm: 640px
+  - md: 768px
+  - lg: 1024px
+  - xl: 1280px
+
+## 🚀 Deployment
+
+- **Platform**: Vercel
+- **Build Command**: `npm run build`
+- **Output Directory**: `build`
+- **Node Version**: 18.x
+- **Automatic Deployments**: Enabled for main branch
+- **Custom Domain**: portfolio-pritam-behera.vercel.app
 
 ## 🔮 Future Enhancements
 
 ### Planned Features
 
-- [ ] **Projects Showcase** page with interactive cards
-- [ ] **Contact Form** with form validation
-- [ ] **Mobile Hamburger Menu** for responsive navigation
+- [ ] **Contact Form** with email integration and validation
+- [ ] **Mobile Hamburger Menu** for improved mobile navigation
 - [ ] **Dark/Light Mode Toggle** for user preference
-- [ ] **Blog Section** for technical articles
-- [ ] **Backend Integration** with Spring Boot
-- [ ] **Database Integration** for dynamic content
+- [ ] **Blog Section** for technical articles and tutorials
+- [ ] **Backend Integration** with Spring Boot for dynamic content
+- [ ] **Database Integration** for project and blog management
 - [ ] **Admin Panel** for content management
 
 ### Technical Improvements
 
-- [ ] **Performance Optimization** with lazy loading
-- [ ] **SEO Optimization** with meta tags
-- [ ] **PWA Features** for mobile app experience
+- [ ] **Performance Optimization** with code splitting and lazy loading
+- [ ] **SEO Optimization** with meta tags and structured data
+- [ ] **PWA Features** for offline support and mobile app experience
 - [ ] **Automated Testing** with Jest and React Testing Library
-- [ ] **CI/CD Pipeline** with GitHub Actions
-- [ ] **TypeScript Migration** for better type safety
+- [ ] **TypeScript Migration** for better type safety and developer experience
+- [ ] **Analytics Integration** to track visitor engagement
 
 ## 🤝 Connect With Me
 
+- **Portfolio**: [portfolio-pritam-behera.vercel.app](https://portfolio-pritam-behera.vercel.app)
 - **GitHub**: [pritam1293](https://github.com/pritam1293)
-- **LinkedIn**: _[Add your LinkedIn profile]_
-- **Email**: _[Add your email]_
-- **Portfolio**: _[Add deployed URL]_
+- **LinkedIn**: [pritam-behera](https://www.linkedin.com/in/pritam-behera/)
+- **Email**: beherapritam2003@gmail.com
+- **Instagram**: [@pritam\_\_085](https://www.instagram.com/pritam__085)
+- **X (Twitter)**: [@Halandowski](https://twitter.com/Halandowski)
 
 ## 📄 License
 
