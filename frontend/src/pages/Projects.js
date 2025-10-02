@@ -256,7 +256,7 @@ const Projects = () => {
               I've built several other interesting projects ranging from smaller utilities to experimental applications.
             </p>
             <div className="flex items-center justify-center gap-2">
-              <span className="text-slate-400">Explore my complete portfolio on</span>
+              <span className="text-slate-400">Explore my all projects on</span>
               <a
                 href="https://github.com/pritam1293?tab=repositories"
                 target="_blank"
