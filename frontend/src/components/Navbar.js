@@ -34,9 +34,21 @@ const Navbar = () => {
             <div style={{ color: 'white', padding: '16px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     {/* Logo/Name Section */}
-                    <div style={{ fontSize: '24px', fontWeight: 'bold' }}>
+                    <Link
+                        to="/"
+                        style={{
+                            fontSize: '24px',
+                            fontWeight: 'bold',
+                            textDecoration: 'none',
+                            color: 'white',
+                            cursor: 'pointer',
+                            transition: 'color 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => e.target.style.color = '#F9AFBB'}
+                        onMouseLeave={(e) => e.target.style.color = 'white'}
+                    >
                         Portfolio
-                    </div>
+                    </Link>
 
                     {/* Hamburger Button (Mobile Only) */}
                     <button
