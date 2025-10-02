@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <div
       ref={homeRef}
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center px-8 py-20 relative overflow-hidden"
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center px-4 md:px-8 pt-32 md:pt-28 pb-20 relative overflow-hidden"
     >
 
       {/* Animated Background Elements */}
@@ -65,85 +65,17 @@ export default function Home() {
 
       {/* Main Content Container */}
       <div className="max-w-7xl w-full relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
 
-          {/* Left Side - Text Content */}
-          <div className="flex-1 text-left space-y-8">
-
-            {/* Greeting Badge */}
-            <div className={`inline-flex items-center gap-2 bg-gradient-to-r from-purple-900/50 to-pink-900/50 backdrop-blur-sm px-4 py-2 rounded-full border border-purple-500/30 mb-4 transition-all duration-700 transform ${animateElements.greeting ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}>
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-purple-300 text-sm font-medium">Available for work</span>
-            </div>
-
-            {/* Main Heading with Gradient */}
-            <div className={`space-y-4 transition-all duration-700 transform ${animateElements.heading ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}>
-              <h1 className="text-7xl font-bold leading-tight">
-                <span className="text-white">Hi, I'm </span>
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-gradient">
-                  Pritam
-                </span>
-              </h1>
-
-              {/* Animated typing effect subtitle */}
-              <div className={`h-12 flex items-center transition-all duration-700 delay-200 transform ${animateElements.subtitle ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
-                }`}>
-                <h2 className="text-2xl text-slate-300 font-light">
-                  <span className="text-purple-400 font-semibold">Full Stack Developer</span>
-                  <span className="text-slate-400"> & </span>
-                  <span className="text-pink-400 font-semibold">Creative Problem Solver</span>
-                </h2>
-              </div>
-            </div>
-
-            {/* Description */}
-            <p className={`text-xl text-slate-400 leading-relaxed max-w-2xl transition-all duration-700 transform ${animateElements.description ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-              }`}>
-              I create beautiful, functional web applications using modern technologies.
-              <br />
-              <span className="text-500">Welcome to my digital portfolio where creativity meets code.</span>
-            </p>
-
-            {/* CTA Buttons */}
-            <div className={`flex gap-4 flex-wrap pt-4 transition-all duration-700 transform ${animateElements.buttons ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}>
-              <button
-                onClick={() => navigate('/projects')}
-                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 cursor-pointer">
-                <span className="relative z-10 flex items-center gap-2">
-                  View My Work
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </button>
-
-              <button
-                onClick={() => navigate('/contact')}
-                className="group px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-purple-500 hover:bg-purple-500/10 transition-all duration-300 hover:scale-105 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/30 cursor-pointer">
-                <span className="flex items-center gap-2">
-                  Contact Me
-                  <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </span>
-              </button>
-            </div>
-            
-          </div>
-
-          {/* Right Side - Profile Image with 3D Effect */}
-          <div className={`flex-shrink-0 relative group transition-all duration-1000 transform ${animateElements.image ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-8 opacity-0 scale-95'
+          {/* Right Side - Profile Image (Order 1 on mobile, 2 on desktop) */}
+          <div className={`flex-shrink-0 relative group transition-all duration-1000 transform order-1 lg:order-2 ${animateElements.image ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-8 opacity-0 scale-95'
             }`}>
             {/* Glowing rings */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-xl opacity-20 animate-spin-slow"></div>
 
             {/* Main image container */}
-            <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
               {/* Gradient border */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-full p-1 group-hover:scale-105 transition-transform duration-500">
                 <div className="w-full h-full bg-slate-900 rounded-full p-2">
@@ -158,13 +90,81 @@ export default function Home() {
               </div>
 
               {/* Floating badges */}
-              <div className="absolute -top-4 -right-4 bg-gradient-to-br from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-2xl shadow-purple-500/50 animate-float animate-glow">
+              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-gradient-to-br from-purple-600 to-pink-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-2xl shadow-purple-500/50 animate-float animate-glow">
                 🚀 Available
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-orange-600 to-amber-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-2xl shadow-orange-500/50 animate-float" style={{ animationDelay: '0.5s' }}>
+              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-gradient-to-br from-orange-600 to-amber-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-2xl shadow-orange-500/50 animate-float" style={{ animationDelay: '0.5s' }}>
                 💻 Developer
               </div>
             </div>
+          </div>
+
+          {/* Left Side - Text Content (Order 2 on mobile, 1 on desktop) */}
+          <div className="flex-1 text-center lg:text-left space-y-6 md:space-y-8 order-2 lg:order-1">
+
+            {/* Greeting Badge */}
+            <div className={`inline-flex items-center gap-2 bg-gradient-to-r from-purple-900/50 to-pink-900/50 backdrop-blur-sm px-4 py-2 rounded-full border border-purple-500/30 mb-4 transition-all duration-700 transform ${animateElements.greeting ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span className="text-purple-300 text-sm font-medium">Available for work</span>
+            </div>
+
+            {/* Main Heading with Gradient */}
+            <div className={`space-y-3 md:space-y-4 transition-all duration-700 transform ${animateElements.heading ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              }`}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                <span className="text-white">Hi, I'm </span>
+                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-gradient">
+                  Pritam
+                </span>
+              </h1>
+
+              {/* Animated typing effect subtitle */}
+              <div className={`min-h-[3rem] md:min-h-[3.5rem] flex items-center justify-center lg:justify-start transition-all duration-700 delay-200 transform ${animateElements.subtitle ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
+                }`}>
+                <h2 className="text-lg sm:text-xl md:text-2xl text-slate-300 font-light">
+                  <span className="text-purple-400 font-semibold">Full Stack Developer</span>
+                  <span className="text-slate-400"> & </span>
+                  <span className="text-pink-400 font-semibold">Creative Problem Solver</span>
+                </h2>
+              </div>
+            </div>
+
+            {/* Description */}
+            <p className={`text-base sm:text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 transition-all duration-700 transform ${animateElements.description ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              }`}>
+              I create beautiful, functional web applications using modern technologies.
+              <br />
+              <span className="text-500">Welcome to my digital portfolio where creativity meets code.</span>
+            </p>
+
+            {/* CTA Buttons */}
+            <div className={`flex flex-col sm:flex-row gap-4 pt-4 items-center justify-center lg:justify-start transition-all duration-700 transform ${animateElements.buttons ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              }`}>
+              <button
+                onClick={() => navigate('/projects')}
+                className="group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 cursor-pointer">
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  View My Work
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </button>
+
+              <button
+                onClick={() => navigate('/contact')}
+                className="group w-full sm:w-auto px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-purple-500 hover:bg-purple-500/10 transition-all duration-300 hover:scale-105 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/30 cursor-pointer">
+                <span className="flex items-center justify-center gap-2">
+                  Contact Me
+                  <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+
           </div>
 
         </div>

@@ -441,7 +441,7 @@ const About = () => {
         },
         {
           label: 'Max Rating',
-          value: '800+',
+          value: '885',
           bgGradient: 'from-purple-900/40 to-purple-800/40',
           borderColor: 'border-purple-500/30',
           hoverBorder: 'hover:border-purple-400/50',
@@ -808,15 +808,15 @@ const About = () => {
                       <div className="space-y-3">
                         {platform.stats.map((stat, index) => (
                           <div key={index} className={`group bg-gradient-to-r ${stat.bgGradient} rounded-xl p-4 border ${stat.borderColor} ${stat.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-lg ${stat.hoverShadow}`}>
-                            <div className="flex items-center justify-between">
+                            <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
                               <div className="flex items-center gap-3">
-                                <div className={`${stat.iconBg} p-2.5 rounded-xl ${stat.iconHoverBg} transition-colors`}>
+                                <div className={`${stat.iconBg} p-2.5 rounded-xl ${stat.iconHoverBg} transition-colors flex-shrink-0`}>
                                   {stat.icon}
                                 </div>
-                                <span className="text-slate-200 font-medium text-lg">{stat.label}</span>
+                                <span className="text-slate-200 font-medium text-base sm:text-lg">{stat.label}</span>
                               </div>
-                              <div className="flex items-center gap-2">
-                                <span className={`text-3xl font-bold bg-gradient-to-r ${stat.valueGradient} bg-clip-text text-transparent`}>
+                              <div className="flex items-center justify-center">
+                                <span className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${stat.valueGradient} bg-clip-text text-transparent break-words`}>
                                   {stat.value}
                                 </span>
                               </div>
