@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with React.js and Tailwind CSS show
 
 ## 🌟 Live Demo
 
-**🔗 [Visit Portfolio Website](https://portfolio-pritam-behera.vercel.app)**
+**🔗 [Visit Portfolio Website](https://pritam-behera.vercel.app)**
 
 Deployed on Vercel with automatic CI/CD integration.
 
