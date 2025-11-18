@@ -192,7 +192,7 @@ const About = () => {
       stats: [
         {
           label: 'Current Rank',
-          value: 'Knight',
+          value: 'Guardian',
           bgGradient: 'from-purple-900/40 to-purple-800/40',
           borderColor: 'border-purple-500/30',
           hoverBorder: 'hover:border-purple-400/50',
@@ -224,7 +224,7 @@ const About = () => {
         },
         {
           label: 'Max Rating',
-          value: '2022',
+          value: '2177',
           bgGradient: 'from-orange-900/40 to-orange-800/40',
           borderColor: 'border-orange-500/30',
           hoverBorder: 'hover:border-orange-400/50',
