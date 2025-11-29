@@ -133,17 +133,17 @@ const Projects = () => {
 
         {/* Header Section */}
         <div ref={headerRef} className="text-center mb-20">
-          <h1 className={`text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent transition-all duration-700 transform ${headerAnimations.title
+          <h1 className={`text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent transition-all duration-700 transform ${headerAnimations.title
             ? 'translate-y-0 opacity-100'
             : '-translate-y-8 opacity-0'
             }`}>
             My Projects
           </h1>
-          <div className={`w-32 h-1.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full mx-auto mb-8 shadow-lg shadow-purple-500/50 transition-all duration-700 transform ${headerAnimations.underline
+          <div className={`w-32 h-1.5 bg-gradient-to-r from-cyan-500 via-teal-500 to-blue-500 rounded-full mx-auto mb-8 shadow-lg shadow-cyan-500/30 transition-all duration-700 transform ${headerAnimations.underline
             ? 'scale-x-100 opacity-100'
             : 'scale-x-0 opacity-0'
             }`}></div>
-          <p className={`text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed transition-all duration-700 transform ${headerAnimations.description
+          <p className={`text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed transition-all duration-700 transform ${headerAnimations.description
             ? 'translate-y-0 opacity-100'
             : 'translate-y-8 opacity-0'
             }`}>

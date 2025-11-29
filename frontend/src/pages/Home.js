@@ -53,14 +53,15 @@ export default function Home() {
   return (
     <div
       ref={homeRef}
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center px-4 md:px-8 pt-32 md:pt-28 pb-20 relative overflow-hidden"
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 flex items-center justify-center px-4 md:px-8 pt-32 md:pt-28 pb-20 relative overflow-hidden"
     >
 
-      {/* Animated Background Elements */}
+      {/* Subtle Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/8 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.05),transparent_50%)]"></div>
       </div>
 
       {/* Main Content Container */}
@@ -71,15 +72,15 @@ export default function Home() {
           <div className={`flex-shrink-0 relative group transition-all duration-1000 transform order-1 lg:order-2 ${animateElements.image ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-8 opacity-0 scale-95'
             }`}>
             {/* Glowing rings */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-xl opacity-20 animate-spin-slow"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full blur-xl opacity-15 animate-spin-slow"></div>
 
             {/* Main image container */}
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
               {/* Gradient border */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-full p-1 group-hover:scale-105 transition-transform duration-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 via-teal-500 to-blue-500 rounded-full p-1 group-hover:scale-105 transition-transform duration-500">
                 <div className="w-full h-full bg-slate-900 rounded-full p-2">
-                  <div className="w-full h-full rounded-full overflow-hidden border-4 border-white/10 group-hover:border-white/20 transition-all duration-500">
+                  <div className="w-full h-full rounded-full overflow-hidden border-4 border-white/10 group-hover:border-cyan-400/30 transition-all duration-500">
                     <img
                       src="/images/profile-photo.png"
                       alt="Pritam"
@@ -90,10 +91,10 @@ export default function Home() {
               </div>
 
               {/* Floating badges */}
-              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-gradient-to-br from-purple-600 to-pink-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-2xl shadow-purple-500/50 animate-float animate-glow">
+              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-gradient-to-br from-cyan-500 to-teal-500 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-2xl shadow-cyan-500/30 animate-float">
                 🚀 Available
               </div>
-              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-gradient-to-br from-orange-600 to-amber-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-2xl shadow-orange-500/50 animate-float" style={{ animationDelay: '0.5s' }}>
+              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-gradient-to-br from-teal-600 to-cyan-600 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold shadow-2xl shadow-teal-500/30 animate-float" style={{ animationDelay: '0.5s' }}>
                 💻 Developer
               </div>
             </div>
@@ -103,10 +104,10 @@ export default function Home() {
           <div className="flex-1 text-center lg:text-left space-y-6 md:space-y-8 order-2 lg:order-1">
 
             {/* Greeting Badge */}
-            <div className={`inline-flex items-center gap-2 bg-gradient-to-r from-purple-900/50 to-pink-900/50 backdrop-blur-sm px-4 py-2 rounded-full border border-purple-500/30 mb-4 transition-all duration-700 transform ${animateElements.greeting ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            <div className={`inline-flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-cyan-500/30 mb-4 transition-all duration-700 transform ${animateElements.greeting ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
               }`}>
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-purple-300 text-sm font-medium">Available for work</span>
+              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+              <span className="text-cyan-300 text-sm font-medium">Available for work</span>
             </div>
 
             {/* Main Heading with Gradient */}
@@ -114,7 +115,7 @@ export default function Home() {
               }`}>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="text-white">Hi, I'm </span>
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-gradient">
+                <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
                   Pritam
                 </span>
               </h1>
@@ -122,20 +123,20 @@ export default function Home() {
               {/* Animated typing effect subtitle */}
               <div className={`min-h-[3rem] md:min-h-[3.5rem] flex items-center justify-center lg:justify-start transition-all duration-700 delay-200 transform ${animateElements.subtitle ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
                 }`}>
-                <h2 className="text-lg sm:text-xl md:text-2xl text-slate-300 font-light">
-                  <span className="text-purple-400 font-semibold">Full Stack Developer</span>
-                  <span className="text-slate-400"> & </span>
-                  <span className="text-pink-400 font-semibold">Creative Problem Solver</span>
+                <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light">
+                  <span className="text-cyan-400 font-semibold">Full Stack Developer</span>
+                  <span className="text-gray-400"> & </span>
+                  <span className="text-teal-400 font-semibold">Creative Problem Solver</span>
                 </h2>
               </div>
             </div>
 
             {/* Description */}
-            <p className={`text-base sm:text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 transition-all duration-700 transform ${animateElements.description ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            <p className={`text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 transition-all duration-700 transform ${animateElements.description ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
               }`}>
               I create beautiful, functional web applications using modern technologies.
               <br />
-              <span className="text-500">Welcome to my digital portfolio where creativity meets code.</span>
+              <span className="text-gray-500">Welcome to my digital portfolio where creativity meets code.</span>
             </p>
 
             {/* CTA Buttons */}
@@ -143,19 +144,19 @@ export default function Home() {
               }`}>
               <button
                 onClick={() => navigate('/projects')}
-                className="group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 cursor-pointer">
+                className="group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/30 cursor-pointer">
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   View My Work
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
 
               <button
                 onClick={() => navigate('/contact')}
-                className="group w-full sm:w-auto px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-purple-500 hover:bg-purple-500/10 transition-all duration-300 hover:scale-105 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/30 cursor-pointer">
+                className="group w-full sm:w-auto px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-cyan-500 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 cursor-pointer">
                 <span className="flex items-center justify-center gap-2">
                   Contact Me
                   <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

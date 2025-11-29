@@ -198,14 +198,14 @@ const About = () => {
         >
           {/* Hero Section */}
           <div className="text-center mb-20">
-            <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+            <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
               About Me
             </h1>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full mx-auto mb-8 shadow-lg shadow-purple-500/50"></div>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <div className="w-32 h-1.5 bg-gradient-to-r from-cyan-500 via-teal-500 to-blue-500 rounded-full mx-auto mb-8 shadow-lg shadow-cyan-500/30"></div>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               I'm a passionate developer who loves creating digital experiences that make a difference.
               <br />
-              <span className="text-slate-400">Here's my story and what drives me every day.</span>
+              <span className="text-gray-400">Here's my story and what drives me every day.</span>
             </p>
           </div>
 
@@ -220,15 +220,15 @@ const About = () => {
             <div className="flex-1 space-y-6">
               <div className="relative">
                 {/* Decorative line */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-orange-500 rounded-full"></div>
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 via-teal-500 to-blue-500 rounded-full"></div>
 
                 <div className="pl-8">
                   <h2 className={`text-4xl font-bold text-white mb-8 flex items-center gap-3 transition-all duration-700 transform ${animations.journey.title ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
                     }`}>
-                    <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
                       My Journey
                     </span>
-                    <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </h2>
@@ -239,9 +239,9 @@ const About = () => {
                       return (
                         <div key={index} className={`group transition-all duration-700 transform ${animations.journey[animKey] ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
                           }`}>
-                          <p className="text-lg text-slate-300 leading-relaxed relative pl-6 transition-all duration-300 hover:text-white">
+                          <p className="text-lg text-gray-300 leading-relaxed relative pl-6 transition-all duration-300 hover:text-white">
                             {/* Bullet point */}
-                            <span className="absolute left-0 top-2 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full group-hover:scale-150 transition-transform"></span>
+                            <span className="absolute left-0 top-2 w-2 h-2 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full group-hover:scale-150 transition-transform"></span>
                             {para}
                           </p>
                         </div>
@@ -250,10 +250,10 @@ const About = () => {
                   </div>
 
                   {/* Call to action or highlight */}
-                  <div className={`mt-8 p-6 bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-2xl border border-purple-500/30 transition-all duration-700 transform ${animations.journey.quote ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+                  <div className={`mt-8 p-6 bg-slate-800/40 rounded-2xl border border-cyan-500/30 transition-all duration-700 transform ${animations.journey.quote ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
                     }`}>
-                    <p className="text-slate-300 italic flex items-center gap-3">
-                      <svg className="w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <p className="text-gray-300 italic flex items-center gap-3">
+                      <svg className="w-6 h-6 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
                       <span className="text-lg">
@@ -267,22 +267,22 @@ const About = () => {
 
             {/* Quick Profile Card */}
             <div className="lg:w-96 w-full">
-              <div className="sticky top-8 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8 border border-purple-500/30 shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 overflow-hidden">
+              <div className="sticky top-8 bg-slate-800/60 backdrop-blur-xl rounded-3xl p-8 border border-cyan-500/30 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 overflow-hidden">
 
                 {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl"></div>
 
                 <div className="relative z-10">
                   {/* Header */}
                   <div className={`text-center mb-8 transition-all duration-700 transform ${animations.profile.header ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
                     }`}>
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-purple-500/30">
+                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-cyan-500/30">
                       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
-                    <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    <h3 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
                       Quick Profile
                     </h3>
                   </div>
@@ -294,7 +294,7 @@ const About = () => {
                       return (
                         <div
                           key={stat.id}
-                          className={`group bg-gradient-to-r from-slate-700/40 to-slate-800/40 rounded-2xl p-5 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-700 hover:scale-105 transform ${animations.profile[animKey] ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
+                          className={`group bg-slate-700/40 rounded-2xl p-5 border border-slate-600/30 hover:border-cyan-500/50 transition-all duration-300 hover:scale-105 transform ${animations.profile[animKey] ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
                             }`}
                         >
                           <div className="flex items-start gap-4">
@@ -310,7 +310,7 @@ const About = () => {
                               <div className={`text-2xl font-bold mb-1 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
                                 {stat.number}
                               </div>
-                              <div className="text-slate-300 text-sm font-medium leading-tight">
+                              <div className="text-gray-300 text-sm font-medium leading-tight">
                                 {stat.description}
                               </div>
                             </div>
@@ -348,7 +348,7 @@ const About = () => {
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-purple-500/20 group-hover:bg-purple-500/30 p-2.5 rounded-xl transition-colors text-purple-400">
+                  <div className="bg-cyan-500/20 group-hover:bg-cyan-500/30 p-2.5 rounded-xl transition-colors text-cyan-400">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
@@ -357,22 +357,22 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">C++</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">C</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Java</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">JavaScript</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Python</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">C++</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">C</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Java</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">JavaScript</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Python</span>
                 </div>
               </div>
             </div>
 
             {/* Backend Card */}
-            <div className={`group bg-gradient-to-br from-lime-900/40 to-lime-800/40 backdrop-blur-xl rounded-3xl p-6 border border-lime-500/30 hover:border-lime-400/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-lime-500/20 relative overflow-hidden transform ${animations.skills.skill2 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+            <div className={`group bg-slate-800/40 backdrop-blur-xl rounded-3xl p-6 border border-teal-500/30 hover:border-teal-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/20 relative overflow-hidden transform ${animations.skills.skill2 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-lime-500/20 group-hover:bg-lime-500/30 p-2.5 rounded-xl transition-colors text-lime-400">
+                  <div className="bg-teal-500/20 group-hover:bg-teal-500/30 p-2.5 rounded-xl transition-colors text-teal-400">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                     </svg>
@@ -393,12 +393,12 @@ const About = () => {
             </div>
 
             {/* Development Tools Card */}
-            <div className={`group bg-gradient-to-br from-slate-700/40 to-slate-800/40 backdrop-blur-xl rounded-3xl p-6 border border-slate-500/30 hover:border-slate-400/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-slate-500/20 relative overflow-hidden transform ${animations.skills.skill3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+            <div className={`group bg-slate-800/40 backdrop-blur-xl rounded-3xl p-6 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 relative overflow-hidden transform ${animations.skills.skill3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-slate-500/20 group-hover:bg-slate-500/30 p-2.5 rounded-xl transition-colors text-slate-400">
+                  <div className="bg-blue-500/20 group-hover:bg-blue-500/30 p-2.5 rounded-xl transition-colors text-blue-400">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -408,9 +408,9 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-indigo-700 to-indigo-800 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Git</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-indigo-700 to-indigo-800 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">GitHub</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-indigo-700 to-indigo-800 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Postman</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Git</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">GitHub</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Postman</span>
                 </div>
               </div>
             </div>
@@ -419,10 +419,10 @@ const About = () => {
 
           {/* Summary */}
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl px-6 py-3 border border-purple-500/20">
+            <div className="inline-flex items-center gap-3 bg-slate-800/50 backdrop-blur-xl rounded-2xl px-6 py-3 border border-cyan-500/20">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-slate-300 text-sm">Constantly learning & exploring new technologies</span>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                <span className="text-gray-300 text-sm">Constantly learning & exploring new technologies</span>
               </div>
             </div>
           </div>
