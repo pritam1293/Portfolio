@@ -22,8 +22,7 @@ const About = () => {
     skills: {
       skill1: false,
       skill2: false,
-      skill3: false,
-      skill4: false
+      skill3: false
     },
     cp: {
       cp1: false,
@@ -89,377 +88,7 @@ const About = () => {
     }
   ];
 
-  const skillsData = [
-    {
-      id: 'languages',
-      title: 'Languages',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-      skills: ['C++', 'C', 'Java', 'JavaScript', 'Python'],
-      gradient: 'from-purple-900/40 to-purple-800/40',
-      borderColor: 'border-purple-500/30',
-      hoverBorder: 'hover:border-purple-400/50',
-      hoverShadow: 'hover:shadow-purple-500/20',
-      iconBg: 'bg-purple-500/20',
-      iconHoverBg: 'group-hover:bg-purple-500/30',
-      iconColor: 'text-purple-400',
-      tagGradient: 'from-purple-600 to-purple-700',
-      tagHover: 'hover:from-purple-500 hover:to-purple-600'
-    },
-    {
-      id: 'frontend',
-      title: 'Frontend',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-        </svg>
-      ),
-      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Bootstrap', 'Tailwind CSS'],
-      gradient: 'from-amber-900/40 to-amber-800/40',
-      borderColor: 'border-amber-500/30',
-      hoverBorder: 'hover:border-amber-400/50',
-      hoverShadow: 'hover:shadow-amber-500/20',
-      iconBg: 'bg-amber-500/20',
-      iconHoverBg: 'group-hover:bg-amber-500/30',
-      iconColor: 'text-amber-400',
-      tagGradient: 'from-amber-600 to-amber-700',
-      tagHover: 'hover:from-amber-500 hover:to-amber-600'
-    },
-    {
-      id: 'backend',
-      title: 'Backend',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-        </svg>
-      ),
-      skills: ['Java', 'SpringBoot', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'MySQL'],
-      gradient: 'from-lime-900/40 to-lime-800/40',
-      borderColor: 'border-lime-500/30',
-      hoverBorder: 'hover:border-lime-400/50',
-      hoverShadow: 'hover:shadow-lime-500/20',
-      iconBg: 'bg-lime-500/20',
-      iconHoverBg: 'group-hover:bg-lime-500/30',
-      iconColor: 'text-lime-400',
-      tagGradient: 'from-slate-700 to-slate-800',
-      tagHover: 'hover:from-slate-600 hover:to-slate-700'
-    },
-    {
-      id: 'tools',
-      title: 'Development Tools',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-      skills: ['Git', 'GitHub', 'Postman'],
-      gradient: 'from-slate-700/40 to-slate-800/40',
-      borderColor: 'border-slate-500/30',
-      hoverBorder: 'hover:border-slate-400/50',
-      hoverShadow: 'hover:shadow-slate-500/20',
-      iconBg: 'bg-slate-500/20',
-      iconHoverBg: 'group-hover:bg-slate-500/30',
-      iconColor: 'text-slate-400',
-      tagGradient: 'from-indigo-700 to-indigo-800',
-      tagHover: 'hover:from-indigo-600 hover:to-indigo-700'
-    }
-  ];
 
-  // Competitive Programming Platforms Data
-  const competitiveProgrammingPlatforms = [
-    {
-      id: 'leetcode',
-      name: 'LeetCode',
-      borderColor: 'border-purple-500/20',
-      decorativeColors: {
-        primary: 'bg-purple-500/10',
-        secondary: 'bg-pink-500/10'
-      },
-      logoGradient: 'from-orange-500 to-orange-600',
-      logoShadow: 'shadow-orange-500/30',
-      titleGradient: 'from-orange-400 via-pink-400 to-purple-400',
-      buttonGradient: 'from-orange-500 to-orange-600',
-      buttonHover: 'hover:from-orange-600 hover:to-orange-700',
-      buttonShadow: 'hover:shadow-orange-500/30',
-      profileUrl: 'https://leetcode.com/u/Pritam1293/',
-      logo: (
-        <img src="/images/leetcode-logo.png" alt="LeetCode" className="w-8 h-8 object-contain" />
-      ),
-      stats: [
-        {
-          label: 'Current Rank',
-          value: 'Guardian',
-          bgGradient: 'from-purple-900/40 to-purple-800/40',
-          borderColor: 'border-purple-500/30',
-          hoverBorder: 'hover:border-purple-400/50',
-          hoverShadow: 'hover:shadow-purple-500/20',
-          iconBg: 'bg-purple-500/20',
-          iconHoverBg: 'group-hover:bg-purple-500/30',
-          valueGradient: 'from-purple-400 to-pink-400',
-          icon: (
-            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-            </svg>
-          )
-        },
-        {
-          label: 'Problems Solved',
-          value: '500+',
-          bgGradient: 'from-emerald-900/40 to-emerald-800/40',
-          borderColor: 'border-emerald-500/30',
-          hoverBorder: 'hover:border-emerald-400/50',
-          hoverShadow: 'hover:shadow-emerald-500/20',
-          iconBg: 'bg-emerald-500/20',
-          iconHoverBg: 'group-hover:bg-emerald-500/30',
-          valueGradient: 'from-emerald-400 to-teal-400',
-          icon: (
-            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          )
-        },
-        {
-          label: 'Max Rating',
-          value: '2177',
-          bgGradient: 'from-orange-900/40 to-orange-800/40',
-          borderColor: 'border-orange-500/30',
-          hoverBorder: 'hover:border-orange-400/50',
-          hoverShadow: 'hover:shadow-orange-500/20',
-          iconBg: 'bg-orange-500/20',
-          iconHoverBg: 'group-hover:bg-orange-500/30',
-          valueGradient: 'from-orange-400 to-amber-400',
-          icon: (
-            <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" strokeWidth={2} />
-              <circle cx="12" cy="12" r="6" strokeWidth={2} />
-              <circle cx="12" cy="12" r="2" fill="currentColor" />
-            </svg>
-          )
-        }
-      ]
-    },
-    {
-      id: 'codeforces',
-      name: 'Codeforces',
-      borderColor: 'border-blue-500/20',
-      decorativeColors: {
-        primary: 'bg-blue-500/10',
-        secondary: 'bg-cyan-500/10'
-      },
-      logoGradient: 'from-red-500 to-cyan-600',
-      logoShadow: 'shadow-blue-500/30',
-      titleGradient: 'from-blue-400 via-cyan-400 to-blue-400',
-      buttonGradient: 'from-blue-500 to-cyan-600',
-      buttonHover: 'hover:from-blue-600 hover:to-cyan-700',
-      buttonShadow: 'hover:shadow-blue-500/30',
-      profileUrl: 'https://codeforces.com/profile/pritam1293',
-      logo: (
-        <div className="flex items-end justify-center gap-1">
-          <div className="w-2 h-4 bg-yellow-400 rounded-sm"></div>
-          <div className="w-2 h-6 bg-blue-500 rounded-sm"></div>
-          <div className="w-2 h-3.5 bg-red-600 rounded-sm"></div>
-        </div>
-      ),
-      stats: [
-        {
-          label: 'Current Rank',
-          value: 'Specialist',
-          bgGradient: 'from-blue-900/40 to-blue-800/40',
-          borderColor: 'border-blue-500/30',
-          hoverBorder: 'hover:border-blue-400/50',
-          hoverShadow: 'hover:shadow-blue-500/20',
-          iconBg: 'bg-blue-500/20',
-          iconHoverBg: 'group-hover:bg-blue-500/30',
-          valueGradient: 'from-blue-400 to-cyan-400',
-          icon: (
-            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-            </svg>
-          )
-        },
-        {
-          label: 'Problems Solved',
-          value: '400+',
-          bgGradient: 'from-emerald-900/40 to-emerald-800/40',
-          borderColor: 'border-emerald-500/30',
-          hoverBorder: 'hover:border-emerald-400/50',
-          hoverShadow: 'hover:shadow-emerald-500/20',
-          iconBg: 'bg-emerald-500/20',
-          iconHoverBg: 'group-hover:bg-emerald-500/30',
-          valueGradient: 'from-emerald-400 to-teal-400',
-          icon: (
-            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          )
-        },
-        {
-          label: 'Max Rating',
-          value: '1479',
-          bgGradient: 'from-cyan-900/40 to-cyan-800/40',
-          borderColor: 'border-cyan-500/30',
-          hoverBorder: 'hover:border-cyan-400/50',
-          hoverShadow: 'hover:shadow-cyan-500/20',
-          iconBg: 'bg-cyan-500/20',
-          iconHoverBg: 'group-hover:bg-cyan-500/30',
-          valueGradient: 'from-cyan-400 to-blue-400',
-          icon: (
-            <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" strokeWidth={2} />
-              <circle cx="12" cy="12" r="6" strokeWidth={2} />
-              <circle cx="12" cy="12" r="2" fill="currentColor" />
-            </svg>
-          )
-        }
-      ]
-    },
-    {
-      id: 'codechef',
-      name: 'CodeChef',
-      borderColor: 'border-yellow-500/20',
-      decorativeColors: {
-        primary: 'bg-yellow-500/10',
-        secondary: 'bg-orange-500/10'
-      },
-      logoGradient: 'from-yellow-500 to-orange-600',
-      logoShadow: 'shadow-yellow-500/30',
-      titleGradient: 'from-yellow-400 via-orange-400 to-red-400',
-      buttonGradient: 'from-yellow-500 to-orange-600',
-      buttonHover: 'hover:from-yellow-600 hover:to-orange-700',
-      buttonShadow: 'hover:shadow-yellow-500/30',
-      profileUrl: 'https://www.codechef.com/users/pritam1293',
-      logo: (
-        <img src="/images/codechef-logo.jpg" alt="CodeChef" className="w-8 h-8 object-contain rounded" />
-      ),
-      stats: [
-        {
-          label: 'Current Rank',
-          value: '⭐⭐⭐',
-          bgGradient: 'from-yellow-900/40 to-yellow-800/40',
-          borderColor: 'border-yellow-500/30',
-          hoverBorder: 'hover:border-yellow-400/50',
-          hoverShadow: 'hover:shadow-yellow-500/20',
-          iconBg: 'bg-yellow-500/20',
-          iconHoverBg: 'group-hover:bg-yellow-500/30',
-          valueGradient: 'from-yellow-400 to-orange-400',
-          icon: (
-            <svg className="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-            </svg>
-          )
-        },
-        {
-          label: 'Problems Solved',
-          value: '150+',
-          bgGradient: 'from-emerald-900/40 to-emerald-800/40',
-          borderColor: 'border-emerald-500/30',
-          hoverBorder: 'hover:border-emerald-400/50',
-          hoverShadow: 'hover:shadow-emerald-500/20',
-          iconBg: 'bg-emerald-500/20',
-          iconHoverBg: 'group-hover:bg-emerald-500/30',
-          valueGradient: 'from-emerald-400 to-teal-400',
-          icon: (
-            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          )
-        },
-        {
-          label: 'Max Rating',
-          value: '1737',
-          bgGradient: 'from-orange-900/40 to-orange-800/40',
-          borderColor: 'border-orange-500/30',
-          hoverBorder: 'hover:border-orange-400/50',
-          hoverShadow: 'hover:shadow-orange-500/20',
-          iconBg: 'bg-orange-500/20',
-          iconHoverBg: 'group-hover:bg-orange-500/30',
-          valueGradient: 'from-orange-400 to-red-400',
-          icon: (
-            <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" strokeWidth={2} />
-              <circle cx="12" cy="12" r="6" strokeWidth={2} />
-              <circle cx="12" cy="12" r="2" fill="currentColor" />
-            </svg>
-          )
-        }
-      ]
-    },
-    {
-      id: 'atcoder',
-      name: 'AtCoder',
-      borderColor: 'border-indigo-500/20',
-      decorativeColors: {
-        primary: 'bg-indigo-500/10',
-        secondary: 'bg-purple-500/10'
-      },
-      logoGradient: 'from-indigo-500 to-purple-600',
-      logoShadow: 'shadow-indigo-500/30',
-      titleGradient: 'from-indigo-400 via-purple-400 to-pink-400',
-      buttonGradient: 'from-indigo-500 to-purple-600',
-      buttonHover: 'hover:from-indigo-600 hover:to-purple-700',
-      buttonShadow: 'hover:shadow-indigo-500/30',
-      profileUrl: 'https://atcoder.jp/users/pritam1293',
-      logo: (
-        <img src="/images/atcoder-logo.png" alt="AtCoder" className="w-8 h-8 object-contain" />
-      ),
-      stats: [
-        {
-          label: 'Current Rank',
-          value: '6 Kyu',
-          bgGradient: 'from-indigo-900/40 to-indigo-800/40',
-          borderColor: 'border-indigo-500/30',
-          hoverBorder: 'hover:border-indigo-400/50',
-          hoverShadow: 'hover:shadow-indigo-500/20',
-          iconBg: 'bg-indigo-500/20',
-          iconHoverBg: 'group-hover:bg-indigo-500/30',
-          valueGradient: 'from-indigo-400 to-purple-400',
-          icon: (
-            <svg className="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-            </svg>
-          )
-        },
-        {
-          label: 'Problems Solved',
-          value: '100+',
-          bgGradient: 'from-emerald-900/40 to-emerald-800/40',
-          borderColor: 'border-emerald-500/30',
-          hoverBorder: 'hover:border-emerald-400/50',
-          hoverShadow: 'hover:shadow-emerald-500/20',
-          iconBg: 'bg-emerald-500/20',
-          iconHoverBg: 'group-hover:bg-emerald-500/30',
-          valueGradient: 'from-emerald-400 to-teal-400',
-          icon: (
-            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          )
-        },
-        {
-          label: 'Max Rating',
-          value: '885',
-          bgGradient: 'from-purple-900/40 to-purple-800/40',
-          borderColor: 'border-purple-500/30',
-          hoverBorder: 'hover:border-purple-400/50',
-          hoverShadow: 'hover:shadow-purple-500/20',
-          iconBg: 'bg-purple-500/20',
-          iconHoverBg: 'group-hover:bg-purple-500/30',
-          valueGradient: 'from-purple-400 to-pink-400',
-          icon: (
-            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10" strokeWidth={2} />
-              <circle cx="12" cy="12" r="6" strokeWidth={2} />
-              <circle cx="12" cy="12" r="2" fill="currentColor" />
-            </svg>
-          )
-        }
-      ]
-    }
-  ];
 
   // Refs for each section
   const heroRef = useRef();
@@ -511,8 +140,7 @@ const About = () => {
               triggerStaggeredAnimation('skills', [
                 { key: 'skill1', delay: 200 },
                 { key: 'skill2', delay: 350 },
-                { key: 'skill3', delay: 500 },
-                { key: 'skill4', delay: 650 }
+                { key: 'skill3', delay: 500 }
               ]);
             }
 
@@ -713,42 +341,80 @@ const About = () => {
 
           {/* Skills Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {skillsData.map((category, index) => {
-              const animKey = `skill${index + 1}`;
-              return (
-                <div
-                  key={category.id}
-                  className={`group bg-gradient-to-br ${category.gradient} backdrop-blur-xl rounded-3xl p-6 border ${category.borderColor} ${category.hoverBorder} transition-all duration-500 hover:scale-105 hover:shadow-xl ${category.hoverShadow} relative overflow-hidden transform ${animations.skills[animKey] ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}
-                >
-                  {/* Decorative glow effect */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
 
-                  <div className="relative z-10">
-                    {/* Header */}
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className={`${category.iconBg} ${category.iconHoverBg} p-2.5 rounded-xl transition-colors ${category.iconColor}`}>
-                        {category.icon}
-                      </div>
-                      <h3 className="text-2xl font-bold text-white">
-                        {category.title}
-                      </h3>
-                    </div>
+            {/* Languages Card */}
+            <div className={`group bg-gradient-to-br from-purple-900/40 to-purple-800/40 backdrop-blur-xl rounded-3xl p-6 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 relative overflow-hidden transform ${animations.skills.skill1 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
 
-                    {/* Skills Tags */}
-                    <div className="flex flex-wrap gap-2.5">
-                      {category.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className={`px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r ${category.tagGradient} ${category.tagHover} transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105`}
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="bg-purple-500/20 group-hover:bg-purple-500/30 p-2.5 rounded-xl transition-colors text-purple-400">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
                   </div>
+                  <h3 className="text-2xl font-bold text-white">Languages</h3>
                 </div>
-              );
-            })}
+
+                <div className="flex flex-wrap gap-2.5">
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">C++</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">C</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Java</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">JavaScript</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Python</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Backend Card */}
+            <div className={`group bg-gradient-to-br from-lime-900/40 to-lime-800/40 backdrop-blur-xl rounded-3xl p-6 border border-lime-500/30 hover:border-lime-400/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-lime-500/20 relative overflow-hidden transform ${animations.skills.skill2 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="bg-lime-500/20 group-hover:bg-lime-500/30 p-2.5 rounded-xl transition-colors text-lime-400">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">Backend</h3>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Java</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">SpringBoot</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">JavaScript</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Node.js</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Express</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">MongoDB</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">MySQL</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Development Tools Card */}
+            <div className={`group bg-gradient-to-br from-slate-700/40 to-slate-800/40 backdrop-blur-xl rounded-3xl p-6 border border-slate-500/30 hover:border-slate-400/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-slate-500/20 relative overflow-hidden transform ${animations.skills.skill3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="bg-slate-500/20 group-hover:bg-slate-500/30 p-2.5 rounded-xl transition-colors text-slate-400">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">Development Tools</h3>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-indigo-700 to-indigo-800 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Git</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-indigo-700 to-indigo-800 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">GitHub</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-indigo-700 to-indigo-800 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Postman</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           {/* Summary */}
@@ -781,69 +447,279 @@ const About = () => {
 
           {/* Competitive Programming Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {competitiveProgrammingPlatforms.map((platform, index) => {
-              const animKey = `cp${index + 1}`;
-              return (
-                <div key={platform.id} className={`w-full transition-all duration-500 transform ${animations.cp[animKey] ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-                  <div className={`bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border ${platform.borderColor} relative overflow-hidden`}>
 
-                    {/* Decorative background elements */}
-                    <div className={`absolute top-0 right-0 w-28 h-28 ${platform.decorativeColors.primary} rounded-full blur-3xl`}></div>
-                    <div className={`absolute bottom-0 left-0 w-24 h-24 ${platform.decorativeColors.secondary} rounded-full blur-3xl`}></div>
-
-                    <div className="relative z-10">
-                      {/* Header with Logo */}
-                      <div className="flex items-center justify-center mb-6">
-                        <div className={`bg-gradient-to-br ${platform.logoGradient} p-2.5 rounded-xl shadow-lg ${platform.logoShadow}`}>
-                          {platform.logo}
-                        </div>
-                      </div>
-
-                      {/* Title */}
-                      <h2 className={`text-3xl font-bold text-center mb-6 bg-gradient-to-r ${platform.titleGradient} bg-clip-text text-transparent`}>
-                        {platform.name}
-                      </h2>
-
-                      {/* Stats Grid */}
-                      <div className="space-y-3">
-                        {platform.stats.map((stat, index) => (
-                          <div key={index} className={`group bg-gradient-to-r ${stat.bgGradient} rounded-xl p-4 border ${stat.borderColor} ${stat.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-lg ${stat.hoverShadow}`}>
-                            <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                              <div className="flex items-center gap-3">
-                                <div className={`${stat.iconBg} p-2.5 rounded-xl ${stat.iconHoverBg} transition-colors flex-shrink-0`}>
-                                  {stat.icon}
-                                </div>
-                                <span className="text-slate-200 font-medium text-base sm:text-lg">{stat.label}</span>
-                              </div>
-                              <div className="flex items-center justify-center">
-                                <span className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${stat.valueGradient} bg-clip-text text-transparent break-words`}>
-                                  {stat.value}
-                                </span>
-                              </div>
-                            </div>
+            {/* LeetCode Card */}
+            <div className={`w-full transition-all duration-500 transform ${animations.cp.cp1 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-purple-500/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-28 h-28 bg-purple-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-pink-500/10 rounded-full blur-3xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2.5 rounded-xl shadow-lg shadow-orange-500/30">
+                      <img src="/images/leetcode-logo.png" alt="LeetCode" className="w-8 h-8 object-contain" />
+                    </div>
+                  </div>
+                  <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">LeetCode</h2>
+                  <div className="space-y-3">
+                    <div className="group bg-gradient-to-r from-purple-900/40 to-purple-800/40 rounded-xl p-4 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-purple-500/20 p-2.5 rounded-xl group-hover:bg-purple-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
                           </div>
-                        ))}
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Current Rank</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Guardian</span>
                       </div>
-
-                      {/* Profile Link Button */}
-                      <div className="mt-6">
-                        <a
-                          href={platform.profileUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`w-full bg-gradient-to-r ${platform.buttonGradient} ${platform.buttonHover} text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg ${platform.buttonShadow} flex items-center justify-center gap-2 group`}
-                        >
-                          <span>Visit Profile</span>
-                          <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
+                    </div>
+                    <div className="group bg-gradient-to-r from-emerald-900/40 to-emerald-800/40 rounded-xl p-4 border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-emerald-500/20 p-2.5 rounded-xl group-hover:bg-emerald-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">500+</span>
+                      </div>
+                    </div>
+                    <div className="group bg-gradient-to-r from-orange-900/40 to-orange-800/40 rounded-xl p-4 border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-orange-500/20 p-2.5 rounded-xl group-hover:bg-orange-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <circle cx="12" cy="12" r="10" strokeWidth={2} />
+                              <circle cx="12" cy="12" r="6" strokeWidth={2} />
+                              <circle cx="12" cy="12" r="2" fill="currentColor" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">2189</span>
                       </div>
                     </div>
                   </div>
+                  <div className="mt-6">
+                    <a href="https://leetcode.com/u/Pritam1293/" target="_blank" rel="noopener noreferrer" className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30 flex items-center justify-center gap-2 group">
+                      <span>Visit Profile</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
+
+            {/* Codeforces Card */}
+            <div className={`w-full transition-all duration-500 transform ${animations.cp.cp2 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-blue-500/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-28 h-28 bg-blue-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-3xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="bg-gradient-to-br from-red-500 to-cyan-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/30">
+                      <div className="flex items-end justify-center gap-1">
+                        <div className="w-2 h-4 bg-yellow-400 rounded-sm"></div>
+                        <div className="w-2 h-6 bg-blue-500 rounded-sm"></div>
+                        <div className="w-2 h-3.5 bg-red-600 rounded-sm"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">Codeforces</h2>
+                  <div className="space-y-3">
+                    <div className="group bg-gradient-to-r from-blue-900/40 to-blue-800/40 rounded-xl p-4 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-blue-500/20 p-2.5 rounded-xl group-hover:bg-blue-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Current Rank</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Specialist</span>
+                      </div>
+                    </div>
+                    <div className="group bg-gradient-to-r from-emerald-900/40 to-emerald-800/40 rounded-xl p-4 border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-emerald-500/20 p-2.5 rounded-xl group-hover:bg-emerald-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">400+</span>
+                      </div>
+                    </div>
+                    <div className="group bg-gradient-to-r from-cyan-900/40 to-cyan-800/40 rounded-xl p-4 border border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-cyan-500/20 p-2.5 rounded-xl group-hover:bg-cyan-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <circle cx="12" cy="12" r="10" strokeWidth={2} />
+                              <circle cx="12" cy="12" r="6" strokeWidth={2} />
+                              <circle cx="12" cy="12" r="2" fill="currentColor" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">1479</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <a href="https://codeforces.com/profile/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2 group">
+                      <span>Visit Profile</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CodeChef Card */}
+            <div className={`w-full transition-all duration-500 transform ${animations.cp.cp3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-yellow-500/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-28 h-28 bg-yellow-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-orange-500/10 rounded-full blur-3xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="bg-gradient-to-br from-yellow-500 to-orange-600 p-2.5 rounded-xl shadow-lg shadow-yellow-500/30">
+                      <img src="/images/codechef-logo.jpg" alt="CodeChef" className="w-8 h-8 object-contain rounded" />
+                    </div>
+                  </div>
+                  <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">CodeChef</h2>
+                  <div className="space-y-3">
+                    <div className="group bg-gradient-to-r from-yellow-900/40 to-yellow-800/40 rounded-xl p-4 border border-yellow-500/30 hover:border-yellow-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-yellow-500/20 p-2.5 rounded-xl group-hover:bg-yellow-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Current Rank</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">⭐⭐⭐</span>
+                      </div>
+                    </div>
+                    <div className="group bg-gradient-to-r from-emerald-900/40 to-emerald-800/40 rounded-xl p-4 border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-emerald-500/20 p-2.5 rounded-xl group-hover:bg-emerald-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">150+</span>
+                      </div>
+                    </div>
+                    <div className="group bg-gradient-to-r from-orange-900/40 to-orange-800/40 rounded-xl p-4 border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-orange-500/20 p-2.5 rounded-xl group-hover:bg-orange-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <circle cx="12" cy="12" r="10" strokeWidth={2} />
+                              <circle cx="12" cy="12" r="6" strokeWidth={2} />
+                              <circle cx="12" cy="12" r="2" fill="currentColor" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">1737</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <a href="https://www.codechef.com/users/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/30 flex items-center justify-center gap-2 group">
+                      <span>Visit Profile</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* AtCoder Card */}
+            <div className={`w-full transition-all duration-500 transform ${animations.cp.cp4 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-indigo-500/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-28 h-28 bg-indigo-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/30">
+                      <img src="/images/atcoder-logo.png" alt="AtCoder" className="w-8 h-8 object-contain" />
+                    </div>
+                  </div>
+                  <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AtCoder</h2>
+                  <div className="space-y-3">
+                    <div className="group bg-gradient-to-r from-indigo-900/40 to-indigo-800/40 rounded-xl p-4 border border-indigo-500/30 hover:border-indigo-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-indigo-500/20 p-2.5 rounded-xl group-hover:bg-indigo-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Current Rank</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">6 Kyu</span>
+                      </div>
+                    </div>
+                    <div className="group bg-gradient-to-r from-emerald-900/40 to-emerald-800/40 rounded-xl p-4 border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-emerald-500/20 p-2.5 rounded-xl group-hover:bg-emerald-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">100+</span>
+                      </div>
+                    </div>
+                    <div className="group bg-gradient-to-r from-purple-900/40 to-purple-800/40 rounded-xl p-4 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
+                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-purple-500/20 p-2.5 rounded-xl group-hover:bg-purple-500/30 transition-colors flex-shrink-0">
+                            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <circle cx="12" cy="12" r="10" strokeWidth={2} />
+                              <circle cx="12" cy="12" r="6" strokeWidth={2} />
+                              <circle cx="12" cy="12" r="2" fill="currentColor" />
+                            </svg>
+                          </div>
+                          <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
+                        </div>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">885</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <a href="https://atcoder.jp/users/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center gap-2 group">
+                      <span>Visit Profile</span>
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
         </div>
