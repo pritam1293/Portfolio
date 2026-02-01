@@ -167,20 +167,20 @@ const Contact = () => {
         {/* Header Section - Calm & Elegant */}
         <div ref={el => sectionRefs.current.header = el} className="text-center mb-20">
           <div className={`inline-block mb-8 transition-all duration-700 transform ${animations.header ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
-            <h1 className="text-6xl md:text-7xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
+            <h1 className="text-7xl md:text-8xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-[#4ade80] via-emerald-400 to-[#22c55e] bg-clip-text text-transparent drop-shadow-2xl">
                 Get In Touch
               </span>
             </h1>
-            <div className="h-1 w-32 mx-auto bg-gradient-to-r from-cyan-500 via-teal-500 to-blue-500 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.4)]"></div>
+            <div className="h-2 w-40 mx-auto bg-gradient-to-r from-[#4ade80] via-emerald-500 to-[#22c55e] rounded-full shadow-2xl shadow-emerald-500/60"></div>
           </div>
 
-          <p className={`text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed transition-all duration-700 transform ${animations.subtitle ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            Let's <span className="text-cyan-400 font-semibold">collaborate</span> and create something <span className="text-teal-400 font-semibold">extraordinary</span> together!
+          <p className={`text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed transition-all duration-700 transform ${animations.subtitle ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            Let's <span className="text-[#4ade80] font-semibold">collaborate</span> and create something <span className="text-[#22c55e] font-semibold">extraordinary</span> together!
           </p>
         </div>        {/* Contact Information Cards - Dynamic Glass */}
         <div ref={el => sectionRefs.current.contact = el} className="mb-20">
-          <h3 className="text-3xl font-bold text-white text-center mb-12">
+          <h3 className="text-4xl font-bold text-white text-center mb-12">
             Contact Information
           </h3>
 
@@ -191,22 +191,23 @@ const Contact = () => {
                 href={contact.link}
                 target={contact.id === 'linkedin' ? '_blank' : undefined}
                 rel={contact.id === 'linkedin' ? 'noopener noreferrer' : undefined}
-                className={`group relative bg-slate-800/40 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50 transition-all duration-300 hover:bg-slate-800/60 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(6,182,212,0.15)] hover:-translate-y-1 ${animations.contactCards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+                className={`group relative bg-[#1e293b]/70 backdrop-blur-xl rounded-2xl p-8 border border-[#4ade80]/40 hover:border-[#4ade80]/70 transition-all duration-500 hover:bg-[#1e293b]/90 hover:shadow-2xl hover:shadow-emerald-500/40 hover:-translate-y-2 hover:scale-105 ${animations.contactCards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-teal-500/0 group-hover:from-cyan-500/5 group-hover:to-teal-500/5 rounded-xl transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#4ade80]/5 to-[#22c55e]/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-all duration-500"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#4ade80]/10 rounded-full blur-3xl"></div>
 
                 <div className="relative flex flex-col items-center text-center gap-5">
-                  <div className="w-14 h-14 rounded-xl bg-slate-700/50 flex items-center justify-center group-hover:bg-cyan-500/10 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all duration-300">
-                    <div className="text-gray-400 group-hover:text-cyan-400 transition-colors">
+                  <div className="w-16 h-16 rounded-2xl bg-[#4ade80]/20 flex items-center justify-center group-hover:bg-[#4ade80]/30 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-emerald-400/60 transition-all duration-500">
+                    <div className="text-[#4ade80] group-hover:text-[#22c55e] transition-colors">
                       {contact.icon}
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#4ade80] transition-colors">
                       {contact.title}
                     </h3>
-                    <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors break-all">
+                    <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors break-all">
                       {contact.value}
                     </p>
                   </div>
@@ -216,7 +217,7 @@ const Contact = () => {
           </div>
         </div>        {/* Social Media Links - Animated Gradients */}
         <div ref={el => sectionRefs.current.social = el} className="mb-20">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
             Connect With Me
           </h2>
 
@@ -227,25 +228,26 @@ const Contact = () => {
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative bg-slate-800/40 backdrop-blur-sm rounded-xl p-10 border border-slate-700/50 transition-all duration-300 hover:bg-slate-800/60 hover:border-teal-500/50 hover:shadow-[0_8px_30px_rgba(20,184,166,0.15)] hover:-translate-y-1 ${animations.socialCards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+                className={`group relative bg-[#0f172a]/70 backdrop-blur-xl rounded-2xl p-10 border border-emerald-500/40 hover:border-emerald-500/70 transition-all duration-500 hover:bg-[#0f172a]/90 hover:shadow-2xl hover:shadow-emerald-500/30 hover:-translate-y-2 hover:scale-105 ${animations.socialCards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/0 to-cyan-500/0 group-hover:from-teal-500/5 group-hover:to-cyan-500/5 rounded-xl transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-[#22c55e]/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-all duration-500"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"></div>
 
                 <div className="relative flex flex-col items-center text-center gap-5">
-                  <div className="text-gray-400 group-hover:text-teal-400 group-hover:scale-110 transition-all duration-300">
+                  <div className="text-emerald-400 group-hover:text-[#22c55e] group-hover:scale-110 transition-all duration-500">
                     {social.icon}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-semibold text-white mb-2 group-hover:text-teal-400 transition-colors">
+                    <h3 className="text-2xl font-semibold text-white mb-2 group-hover:text-emerald-400 transition-colors">
                       {social.name}
                     </h3>
-                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                    <p className="text-gray-300 group-hover:text-gray-200 transition-colors">
                       {social.username}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2 text-gray-500 group-hover:text-cyan-400 transition-colors text-sm">
+                  <div className="flex items-center gap-2 text-gray-500 group-hover:text-[#4ade80] transition-colors text-sm">
                     <span>Visit Profile</span>
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -259,14 +261,15 @@ const Contact = () => {
 
         {/* Footer Message - Calm & Professional */}
         <div className="text-center mt-20">
-          <div className="relative bg-slate-800/40 backdrop-blur-sm rounded-xl px-12 py-10 border border-slate-700/50 max-w-3xl mx-auto hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(6,182,212,0.15)] transition-all duration-300 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-teal-500/0 group-hover:from-cyan-500/5 group-hover:to-teal-500/5 rounded-xl transition-all duration-300"></div>
+          <div className="relative bg-[#1e293b]/60 backdrop-blur-xl rounded-2xl px-12 py-10 border border-[#4ade80]/40 hover:border-[#4ade80]/70 max-w-3xl mx-auto hover:shadow-2xl hover:shadow-emerald-500/40 transition-all duration-500 group overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#4ade80]/5 to-[#22c55e]/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-all duration-500"></div>
+            <div className="absolute top-0 left-0 w-40 h-40 bg-[#4ade80]/10 rounded-full blur-3xl"></div>
 
             <div className="relative">
-              <p className="text-gray-300 leading-relaxed mb-4 text-lg">
+              <p className="text-gray-200 leading-relaxed mb-4 text-lg">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
               </p>
-              <p className="text-2xl font-semibold text-cyan-400">
+              <p className="text-2xl font-semibold bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
                 Let's build something amazing together! 🚀
               </p>
             </div>

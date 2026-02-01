@@ -179,15 +179,21 @@ const About = () => {
   const isVisible = (sectionId) => visibleSections.has(sectionId);
 
   return (
-    <div style={{
+    <div className="min-h-screen bg-gradient-to-br from-[#1a2332] via-[#1e3a3a] to-[#2d9688] relative overflow-hidden" style={{
       paddingTop: '96px',
-      minHeight: '100vh',
       padding: '96px 40px 40px 40px'
     }}>
+      {/* Ambient Background Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-[#4ade80]/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#22c55e]/12 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+
       <div style={{
         maxWidth: '1200px',
         margin: '0 auto'
-      }}>
+      }} className="relative z-10">
 
         {/* About Me Section */}
         <div
@@ -198,14 +204,14 @@ const About = () => {
         >
           {/* Hero Section */}
           <div className="text-center mb-20">
-            <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
+            <h1 className="text-7xl font-bold mb-6 bg-gradient-to-r from-[#4ade80] via-emerald-400 to-[#22c55e] bg-clip-text text-transparent drop-shadow-2xl">
               About Me
             </h1>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-cyan-500 via-teal-500 to-blue-500 rounded-full mx-auto mb-8 shadow-lg shadow-cyan-500/30"></div>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <div className="w-40 h-2 bg-gradient-to-r from-[#4ade80] via-emerald-500 to-[#22c55e] rounded-full mx-auto mb-8 shadow-2xl shadow-emerald-500/60"></div>
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               I'm a passionate developer who loves creating digital experiences that make a difference.
               <br />
-              <span className="text-gray-400">Here's my story and what drives me every day.</span>
+              <span className="text-gray-300">Here's my story and what drives me every day.</span>
             </p>
           </div>
 
@@ -219,16 +225,16 @@ const About = () => {
             {/* Journey Text Content */}
             <div className="flex-1 space-y-6">
               <div className="relative">
-                {/* Decorative line */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 via-teal-500 to-blue-500 rounded-full"></div>
+                {/* Decorative line with glow */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#4ade80] via-emerald-500 to-[#22c55e] rounded-full shadow-lg shadow-emerald-500/50"></div>
 
                 <div className="pl-8">
-                  <h2 className={`text-4xl font-bold text-white mb-8 flex items-center gap-3 transition-all duration-700 transform ${animations.journey.title ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+                  <h2 className={`text-5xl font-bold text-white mb-8 flex items-center gap-3 transition-all duration-700 transform ${animations.journey.title ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
                     }`}>
-                    <span className="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent drop-shadow-lg">
                       My Journey
                     </span>
-                    <svg className="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-9 h-9 text-[#4ade80]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </h2>
@@ -239,9 +245,9 @@ const About = () => {
                       return (
                         <div key={index} className={`group transition-all duration-700 transform ${animations.journey[animKey] ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
                           }`}>
-                          <p className="text-lg text-gray-300 leading-relaxed relative pl-6 transition-all duration-300 hover:text-white">
-                            {/* Bullet point */}
-                            <span className="absolute left-0 top-2 w-2 h-2 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full group-hover:scale-150 transition-transform"></span>
+                          <p className="text-lg text-gray-200 leading-relaxed relative pl-6 transition-all duration-300 hover:text-white">
+                            {/* Bullet point with glow */}
+                            <span className="absolute left-0 top-2 w-2.5 h-2.5 bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-full group-hover:scale-150 transition-transform shadow-lg shadow-emerald-400/80"></span>
                             {para}
                           </p>
                         </div>
@@ -249,14 +255,14 @@ const About = () => {
                     })}
                   </div>
 
-                  {/* Call to action or highlight */}
-                  <div className={`mt-8 p-6 bg-slate-800/40 rounded-2xl border border-cyan-500/30 transition-all duration-700 transform ${animations.journey.quote ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+                  {/* Call to action with glassmorphism */}
+                  <div className={`mt-8 p-6 bg-[#1e293b]/60 backdrop-blur-md rounded-2xl border border-[#4ade80]/40 transition-all duration-700 transform shadow-xl shadow-emerald-500/20 ${animations.journey.quote ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
                     }`}>
-                    <p className="text-gray-300 italic flex items-center gap-3">
-                      <svg className="w-6 h-6 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <p className="text-gray-200 italic flex items-center gap-3">
+                      <svg className="w-7 h-7 text-[#4ade80] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
-                      <span className="text-lg">
+                      <span className="text-lg font-medium">
                         "Always learning, always building, always pushing boundaries."
                       </span>
                     </p>
@@ -265,36 +271,36 @@ const About = () => {
               </div>
             </div>
 
-            {/* Quick Profile Card */}
+            {/* Quick Profile Card with 3D Effects */}
             <div className="lg:w-96 w-full">
-              <div className="sticky top-8 bg-slate-800/60 backdrop-blur-xl rounded-3xl p-8 border border-cyan-500/30 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 overflow-hidden">
+              <div className="sticky top-8 bg-[#0f172a]/70 backdrop-blur-xl rounded-3xl p-8 border border-[#4ade80]/40 shadow-2xl hover:shadow-emerald-500/40 transition-all duration-500 overflow-hidden hover:scale-105 hover:-translate-y-2">
 
-                {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl"></div>
+                {/* Decorative elements with enhanced glow */}
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[#4ade80]/15 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#22c55e]/12 rounded-full blur-3xl"></div>
 
                 <div className="relative z-10">
                   {/* Header */}
                   <div className={`text-center mb-8 transition-all duration-700 transform ${animations.profile.header ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
                     }`}>
-                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-cyan-500/30">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#4ade80] to-[#22c55e] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl shadow-emerald-500/60">
+                      <svg className="w-10 h-10 text-[#0f172a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
-                    <h3 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                    <h3 className="text-3xl font-bold bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
                       Quick Profile
                     </h3>
                   </div>
 
-                  {/* Stats */}
+                  {/* Stats with enhanced styling */}
                   <div className="space-y-4">
                     {profileStats.map((stat, index) => {
                       const animKey = `stat${index + 1}`;
                       return (
                         <div
                           key={stat.id}
-                          className={`group bg-slate-700/40 rounded-2xl p-5 border border-slate-600/30 hover:border-cyan-500/50 transition-all duration-300 hover:scale-105 transform ${animations.profile[animKey] ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
+                          className={`group bg-[#1e293b]/60 backdrop-blur-sm rounded-2xl p-5 border border-white/10 hover:border-[#4ade80]/50 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20 transform hover:-translate-y-1 ${animations.profile[animKey] ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
                             }`}
                         >
                           <div className="flex items-start gap-4">
@@ -310,7 +316,7 @@ const About = () => {
                               <div className={`text-2xl font-bold mb-1 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
                                 {stat.number}
                               </div>
-                              <div className="text-gray-300 text-sm font-medium leading-tight">
+                              <div className="text-gray-200 text-sm font-medium leading-tight">
                                 {stat.description}
                               </div>
                             </div>
@@ -335,20 +341,20 @@ const About = () => {
           className={`scroll-animate ${isVisible('skills') ? 'animate-popIn animate-delay-200' : ''}`}
         >
           {/* Section Title */}
-          <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+          <h2 className="text-6xl font-bold text-center mb-16 bg-gradient-to-r from-[#4ade80] via-emerald-400 to-[#22c55e] bg-clip-text text-transparent drop-shadow-2xl">
             Technical Skills
           </h2>
 
           {/* Skills Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
 
-            {/* Languages Card */}
-            <div className={`group bg-gradient-to-br from-purple-900/40 to-purple-800/40 backdrop-blur-xl rounded-3xl p-6 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 relative overflow-hidden transform ${animations.skills.skill1 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+            {/* Languages Card with 3D Effects */}
+            <div className={`group bg-[#1e293b]/70 backdrop-blur-xl rounded-3xl p-6 border border-[#4ade80]/40 hover:border-[#4ade80]/70 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/40 relative overflow-hidden transform hover:-translate-y-2 ${animations.skills.skill1 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#4ade80]/10 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-cyan-500/20 group-hover:bg-cyan-500/30 p-2.5 rounded-xl transition-colors text-cyan-400">
+                  <div className="bg-[#4ade80]/20 group-hover:bg-[#4ade80]/30 p-2.5 rounded-xl transition-colors text-[#4ade80]">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
@@ -357,22 +363,20 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">C++</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">C</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Java</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">JavaScript</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Python</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-emerald-400 hover:to-green-400 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">C++</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-emerald-400 hover:to-green-400 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">C</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-emerald-400 hover:to-green-400 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Java</span>
                 </div>
               </div>
             </div>
 
             {/* Backend Card */}
-            <div className={`group bg-slate-800/40 backdrop-blur-xl rounded-3xl p-6 border border-teal-500/30 hover:border-teal-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/20 relative overflow-hidden transform ${animations.skills.skill2 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+            <div className={`group bg-[#0f172a]/70 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/40 hover:border-emerald-500/70 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/30 relative overflow-hidden transform hover:-translate-y-2 ${animations.skills.skill2 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-teal-500/20 group-hover:bg-teal-500/30 p-2.5 rounded-xl transition-colors text-teal-400">
+                  <div className="bg-emerald-500/20 group-hover:bg-emerald-500/30 p-2.5 rounded-xl transition-colors text-emerald-400">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                     </svg>
@@ -381,24 +385,24 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Java</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">SpringBoot</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">JavaScript</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Node.js</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Express</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">MongoDB</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">MySQL</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Java</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">SpringBoot</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">JavaScript</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Node.js</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Express</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">MongoDB</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">MySQL</span>
                 </div>
               </div>
             </div>
 
             {/* Development Tools Card */}
-            <div className={`group bg-slate-800/40 backdrop-blur-xl rounded-3xl p-6 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 relative overflow-hidden transform ${animations.skills.skill3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+            <div className={`group bg-[#1e293b]/70 backdrop-blur-xl rounded-3xl p-6 border border-[#22c55e]/40 hover:border-[#22c55e]/70 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30 relative overflow-hidden transform hover:-translate-y-2 ${animations.skills.skill3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#22c55e]/10 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-blue-500/20 group-hover:bg-blue-500/30 p-2.5 rounded-xl transition-colors text-blue-400">
+                  <div className="bg-[#22c55e]/20 group-hover:bg-[#22c55e]/30 p-2.5 rounded-xl transition-colors text-[#22c55e]">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -408,9 +412,9 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Git</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">GitHub</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-105">Postman</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Git</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">GitHub</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Postman</span>
                 </div>
               </div>
             </div>
@@ -419,10 +423,10 @@ const About = () => {
 
           {/* Summary */}
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-3 bg-slate-800/50 backdrop-blur-xl rounded-2xl px-6 py-3 border border-cyan-500/20">
+            <div className="inline-flex items-center gap-3 bg-[#1e293b]/60 backdrop-blur-md rounded-full px-6 py-3 border border-[#4ade80]/40 shadow-lg shadow-emerald-500/20">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                <span className="text-gray-300 text-sm">Constantly learning & exploring new technologies</span>
+                <div className="w-2.5 h-2.5 bg-[#4ade80] rounded-full animate-pulse shadow-lg shadow-emerald-400/80"></div>
+                <span className="text-gray-200 text-sm font-medium">Constantly learning & exploring new technologies</span>
               </div>
             </div>
           </div>
@@ -435,13 +439,7 @@ const About = () => {
           style={{ marginBottom: '80px' }}
           className={`scroll-animate ${isVisible('cp') ? 'animate-bounceIn animate-delay-400' : ''}`}
         >
-          <h2 style={{
-            fontSize: '3rem',
-            fontWeight: 'bold',
-            color: '#FAFAFA',
-            marginBottom: '3rem',
-            textAlign: 'center'
-          }}>
+          <h2 className="text-6xl font-bold text-center mb-16 bg-gradient-to-r from-[#4ade80] via-emerald-400 to-[#22c55e] bg-clip-text text-transparent drop-shadow-2xl">
             Competitive Programming
           </h2>
 
@@ -484,7 +482,7 @@ const About = () => {
                           </div>
                           <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">500+</span>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">600+</span>
                       </div>
                     </div>
                     <div className="group bg-gradient-to-r from-orange-900/40 to-orange-800/40 rounded-xl p-4 border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20">
@@ -499,7 +497,7 @@ const About = () => {
                           </div>
                           <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">2189</span>
+                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">2236</span>
                       </div>
                     </div>
                   </div>
