@@ -1,65 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 
 const Contact = () => {
-  const [animations, setAnimations] = useState({
-    header: false,
-    subtitle: false,
-    contactCards: false,
-    socialCards: false
-  });
-
-  const sectionRefs = useRef({
-    header: null,
-    contact: null,
-    social: null
-  });
-
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const headerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setAnimations(prev => ({ ...prev, header: true })), 100);
-          setTimeout(() => setAnimations(prev => ({ ...prev, subtitle: true })), 400);
-        }
-      });
-    }, observerOptions);
-
-    const contactObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setAnimations(prev => ({ ...prev, contactCards: true }));
-        }
-      });
-    }, observerOptions);
-
-    const socialObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setAnimations(prev => ({ ...prev, socialCards: true }));
-        }
-      });
-    }, observerOptions);
-
-    const currentHeaderRef = sectionRefs.current.header;
-    const currentContactRef = sectionRefs.current.contact;
-    const currentSocialRef = sectionRefs.current.social;
-
-    if (currentHeaderRef) headerObserver.observe(currentHeaderRef);
-    if (currentContactRef) contactObserver.observe(currentContactRef);
-    if (currentSocialRef) socialObserver.observe(currentSocialRef);
-
-    return () => {
-      if (currentHeaderRef) headerObserver.unobserve(currentHeaderRef);
-      if (currentContactRef) contactObserver.unobserve(currentContactRef);
-      if (currentSocialRef) socialObserver.unobserve(currentSocialRef);
-    };
-  }, []);
-
   const contactInfo = [
     {
       id: 'email',
@@ -85,9 +26,9 @@ const Contact = () => {
       title: 'Phone',
       value: '+91-8658535505',
       link: 'tel:+918658535505',
-      gradient: 'from-green-500/20 to-emerald-500/20',
-      borderColor: 'border-green-500/30',
-      hoverColor: 'hover:border-green-500/60'
+      gradient: 'from-white/20 to-white/20',
+      borderColor: 'border-white/30',
+      hoverColor: 'hover:border-white/60'
     },
     {
       id: 'linkedin',
@@ -97,7 +38,6 @@ const Contact = () => {
         </svg>
       ),
       title: 'LinkedIn',
-      value: 'pritam-behera',
       link: 'https://www.linkedin.com/in/pritam-behera/',
       gradient: 'from-blue-500/20 to-cyan-500/20',
       borderColor: 'border-blue-500/30',
@@ -109,7 +49,6 @@ const Contact = () => {
     {
       id: 'github',
       name: 'GitHub',
-      username: '@pritam1293',
       link: 'https://github.com/pritam1293',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -123,7 +62,6 @@ const Contact = () => {
     {
       id: 'instagram',
       name: 'Instagram',
-      username: '@pritam__085',
       link: 'https://www.instagram.com/pritam__085',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -137,8 +75,7 @@ const Contact = () => {
     {
       id: 'twitter',
       name: 'X (Twitter)',
-      username: '@Halandowski',
-      link: 'https://twitter.com/Halandowski',
+      link: 'https://twitter.com/bluered_13',
       icon: (
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -151,63 +88,57 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 relative overflow-hidden" style={{
+    <div className="min-h-screen bg-[#0f1116] relative overflow-hidden" style={{
       paddingTop: '96px',
-      padding: '96px 40px 40px 40px'
+      padding: '96px 40px 20px 40px'
     }}>
 
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-teal-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.05),transparent_50%)]"></div>
-      </div>      <div className="max-w-1200px mx-auto relative z-10">
+      <div className="max-w-1200px mx-auto relative z-10">
 
         {/* Header Section - Calm & Elegant */}
-        <div ref={el => sectionRefs.current.header = el} className="text-center mb-20">
-          <div className={`inline-block mb-8 transition-all duration-700 transform ${animations.header ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
-            <h1 className="text-7xl md:text-8xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-[#4ade80] via-emerald-400 to-[#22c55e] bg-clip-text text-transparent drop-shadow-2xl">
+        <div className="text-center mb-10">
+          <div className="inline-block mb-6">
+            <h1 className="text-5xl md:text-6xl font-semibold mb-3">
+              <span className="text-white">
                 Get In Touch
               </span>
             </h1>
-            <div className="h-2 w-40 mx-auto bg-gradient-to-r from-[#4ade80] via-emerald-500 to-[#22c55e] rounded-full shadow-2xl shadow-emerald-500/60"></div>
+            <div className="h-1.5 w-32 mx-auto bg-white/20 rounded-full"></div>
           </div>
 
-          <p className={`text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed transition-all duration-700 transform ${animations.subtitle ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            Let's <span className="text-[#4ade80] font-semibold">collaborate</span> and create something <span className="text-[#22c55e] font-semibold">extraordinary</span> together!
+          <p className="text-base text-white max-w-2xl mx-auto leading-relaxed">
+            Let's <span className="text-white font-medium">collaborate</span> and create something <span className="text-white font-medium">extraordinary</span> together!
           </p>
-        </div>        {/* Contact Information Cards - Dynamic Glass */}
-        <div ref={el => sectionRefs.current.contact = el} className="mb-20">
-          <h3 className="text-4xl font-bold text-white text-center mb-12">
+        </div>        
+        {/* Contact Information Cards - Dynamic Glass */}
+        <div className="mb-10">
+          <h3 className="text-2xl font-semibold text-white text-center mb-6">
             Contact Information
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {contactInfo.map((contact, index) => (
               <a
                 key={contact.id}
                 href={contact.link}
                 target={contact.id === 'linkedin' ? '_blank' : undefined}
                 rel={contact.id === 'linkedin' ? 'noopener noreferrer' : undefined}
-                className={`group relative bg-[#1e293b]/70 backdrop-blur-xl rounded-2xl p-8 border border-[#4ade80]/40 hover:border-[#4ade80]/70 transition-all duration-500 hover:bg-[#1e293b]/90 hover:shadow-2xl hover:shadow-emerald-500/40 hover:-translate-y-2 hover:scale-105 ${animations.contactCards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                className="group relative bg-[#1e293b]/70 backdrop-blur-xl rounded-2xl p-5 border border-white/20 hover:border-white/40 hover:bg-[#1e293b]/90 hover:shadow-2xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#4ade80]/5 to-[#22c55e]/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-all duration-500"></div>
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#4ade80]/10 rounded-full blur-3xl"></div>
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 rounded-2xl"></div>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-3xl"></div>
 
-                <div className="relative flex flex-col items-center text-center gap-5">
-                  <div className="w-16 h-16 rounded-2xl bg-[#4ade80]/20 flex items-center justify-center group-hover:bg-[#4ade80]/30 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-emerald-400/60 transition-all duration-500">
-                    <div className="text-[#4ade80] group-hover:text-[#22c55e] transition-colors">
+                <div className="relative flex flex-col items-center text-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center group-hover:bg-white/30">
+                    <div className="text-white scale-75">
                       {contact.icon}
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#4ade80] transition-colors">
+                    <h3 className="text-lg font-medium text-white mb-1">
                       {contact.title}
                     </h3>
-                    <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors break-all">
+                    <p className="text-white text-sm break-all">
                       {contact.value}
                     </p>
                   </div>
@@ -215,41 +146,41 @@ const Contact = () => {
               </a>
             ))}
           </div>
-        </div>        {/* Social Media Links - Animated Gradients */}
-        <div ref={el => sectionRefs.current.social = el} className="mb-20">
-          <h2 className="text-4xl font-bold text-white text-center mb-12">
+        </div>        
+        {/* Social Media Links - Animated Gradients */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-semibold text-white text-center mb-6">
             Connect With Me
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {socialLinks.map((social, index) => (
               <a
                 key={social.id}
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative bg-[#0f172a]/70 backdrop-blur-xl rounded-2xl p-10 border border-emerald-500/40 hover:border-emerald-500/70 transition-all duration-500 hover:bg-[#0f172a]/90 hover:shadow-2xl hover:shadow-emerald-500/30 hover:-translate-y-2 hover:scale-105 ${animations.socialCards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                className="group relative bg-[#0f172a]/70 backdrop-blur-xl rounded-2xl p-5 border border-white/20 hover:border-white/40 hover:bg-[#0f172a]/90 hover:shadow-2xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-[#22c55e]/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-all duration-500"></div>
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 rounded-2xl"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full blur-3xl"></div>
 
-                <div className="relative flex flex-col items-center text-center gap-5">
-                  <div className="text-emerald-400 group-hover:text-[#22c55e] group-hover:scale-110 transition-all duration-500">
+                <div className="relative flex flex-col items-center text-center gap-3">
+                  <div className="text-white scale-90">
                     {social.icon}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-semibold text-white mb-2 group-hover:text-emerald-400 transition-colors">
+                    <h3 className="text-lg font-medium text-white mb-1">
                       {social.name}
                     </h3>
-                    <p className="text-gray-300 group-hover:text-gray-200 transition-colors">
+                    <p className="text-white text-sm">
                       {social.username}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2 text-gray-500 group-hover:text-[#4ade80] transition-colors text-sm">
+                  <div className="flex items-center gap-2 text-white text-xs">
                     <span>Visit Profile</span>
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </div>
@@ -260,21 +191,22 @@ const Contact = () => {
         </div>
 
         {/* Footer Message - Calm & Professional */}
-        <div className="text-center mt-20">
-          <div className="relative bg-[#1e293b]/60 backdrop-blur-xl rounded-2xl px-12 py-10 border border-[#4ade80]/40 hover:border-[#4ade80]/70 max-w-3xl mx-auto hover:shadow-2xl hover:shadow-emerald-500/40 transition-all duration-500 group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#4ade80]/5 to-[#22c55e]/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-all duration-500"></div>
-            <div className="absolute top-0 left-0 w-40 h-40 bg-[#4ade80]/10 rounded-full blur-3xl"></div>
+        <div className="text-center mt-10">
+          <div className="relative bg-[#1e293b]/60 backdrop-blur-xl rounded-2xl px-8 py-6 border border-white/20 hover:border-white/40 max-w-3xl mx-auto hover:shadow-2xl group overflow-hidden">
+            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 rounded-2xl"></div>
+            <div className="absolute top-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
 
             <div className="relative">
-              <p className="text-gray-200 leading-relaxed mb-4 text-lg">
+              <p className="text-white leading-relaxed mb-3 text-base">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
               </p>
-              <p className="text-2xl font-semibold bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
+              <p className="text-lg font-medium text-white">
                 Let's build something amazing together! 🚀
               </p>
             </div>
           </div>
-        </div>      </div>
+        </div> 
+      </div>
     </div>
   )
 }

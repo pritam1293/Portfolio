@@ -1,37 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 
 const About = () => {
-  const [visibleSections, setVisibleSections] = useState(new Set());
-
-  // Consolidated animation state for all sections
-  const [animations, setAnimations] = useState({
-    journey: {
-      title: false,
-      para1: false,
-      para2: false,
-      para3: false,
-      quote: false
-    },
-    profile: {
-      header: false,
-      stat1: false,
-      stat2: false,
-      stat3: false,
-      stat4: false
-    },
-    skills: {
-      skill1: false,
-      skill2: false,
-      skill3: false
-    },
-    cp: {
-      cp1: false,
-      cp2: false,
-      cp3: false,
-      cp4: false
-    }
-  });
-
   const journeyParagraphs = [
     "I'm currently in my final year of B.Tech at NIT Rourkela, where my passion for technology and problem-solving has led me deep into the world of software development. What started as curiosity about how things work has evolved into a genuine love for creating digital solutions.",
 
@@ -40,155 +9,11 @@ const About = () => {
     "When I'm not coding, you'll find me on the cricket field, following football matches, or getting excited about tennis during Wimbledon season. I'm also a huge fan of fantasy and sci-fi movies - there's something magical about stories that push the boundaries of imagination!"
   ];
 
-  // Add this to your data constants at the top
-  const profileStats = [
-    {
-      id: 'education',
-      number: 'Final Year',
-      description: 'B.Tech at NIT Rourkela',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      ),
-      gradient: 'from-blue-500 to-cyan-500'
-    },
-    {
-      id: 'technologies',
-      number: '9+',
-      description: 'Technologies Mastered',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-      gradient: 'from-purple-500 to-pink-500'
-    },
-    {
-      id: 'sports',
-      number: 'Cricket, Football',
-      description: 'Favorite Sports',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-      gradient: 'from-green-500 to-emerald-500'
-    },
-    {
-      id: 'movies',
-      number: '∞',
-      description: 'Sci-Fi Movies Watched',
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
-        </svg>
-      ),
-      gradient: 'from-orange-500 to-red-500'
-    }
-  ];
-
-
-
-  // Refs for each section
-  const heroRef = useRef();
-  const storyRef = useRef();
-  const skillsRef = useRef();
-  const cpRef = useRef();
-
-  // Helper function to trigger staggered animations
-  const triggerStaggeredAnimation = (section, animationKeys) => {
-    animationKeys.forEach(({ key, delay }) => {
-      setTimeout(() => {
-        setAnimations(prev => ({
-          ...prev,
-          [section]: { ...prev[section], [key]: true }
-        }));
-      }, delay);
-    });
-  };
-
-  useEffect(() => {
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleSections(prev => new Set([...prev, entry.target.id]));
-
-            // Trigger staggered animations for Journey section
-            if (entry.target.id === 'story') {
-              triggerStaggeredAnimation('journey', [
-                { key: 'title', delay: 200 },
-                { key: 'para1', delay: 400 },
-                { key: 'para2', delay: 600 },
-                { key: 'para3', delay: 800 },
-                { key: 'quote', delay: 1000 }
-              ]);
-
-              triggerStaggeredAnimation('profile', [
-                { key: 'header', delay: 300 },
-                { key: 'stat1', delay: 500 },
-                { key: 'stat2', delay: 700 },
-                { key: 'stat3', delay: 900 },
-                { key: 'stat4', delay: 1100 }
-              ]);
-            }
-
-            // Trigger staggered animations for Skills section
-            if (entry.target.id === 'skills') {
-              triggerStaggeredAnimation('skills', [
-                { key: 'skill1', delay: 200 },
-                { key: 'skill2', delay: 350 },
-                { key: 'skill3', delay: 500 }
-              ]);
-            }
-
-            // Trigger staggered animations for Competitive Programming section
-            if (entry.target.id === 'cp') {
-              triggerStaggeredAnimation('cp', [
-                { key: 'cp1', delay: 200 },
-                { key: 'cp2', delay: 350 },
-                { key: 'cp3', delay: 500 },
-                { key: 'cp4', delay: 650 }
-              ]);
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of element is visible
-        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element is fully visible
-      }
-    );
-
-    // Observe all sections
-    const sections = [heroRef.current, storyRef.current, skillsRef.current, cpRef.current];
-    sections.forEach(section => {
-      if (section) observer.observe(section);
-    });
-
-    return () => {
-      sections.forEach(section => {
-        if (section) observer.unobserve(section);
-      });
-    };
-  }, []);
-
-  // Helper function to check if section is visible
-  const isVisible = (sectionId) => visibleSections.has(sectionId);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a2332] via-[#1e3a3a] to-[#2d9688] relative overflow-hidden" style={{
+    <div className="min-h-screen bg-[#0f1116] relative overflow-hidden" style={{
       paddingTop: '96px',
       padding: '96px 40px 40px 40px'
     }}>
-      {/* Ambient Background Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-[#4ade80]/15 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#22c55e]/12 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
 
       <div style={{
         maxWidth: '1200px',
@@ -197,57 +22,49 @@ const About = () => {
 
         {/* About Me Section */}
         <div
-          ref={heroRef}
           id="hero"
           style={{ marginBottom: '80px' }}
-          className={`scroll-animate ${isVisible('hero') ? 'animate-fadeInUp' : ''}`}
         >
           {/* Hero Section */}
           <div className="text-center mb-20">
-            <h1 className="text-7xl font-bold mb-6 bg-gradient-to-r from-[#4ade80] via-emerald-400 to-[#22c55e] bg-clip-text text-transparent drop-shadow-2xl">
+            <h1 className="text-7xl font-bold mb-6 text-white drop-shadow-2xl">
               About Me
             </h1>
-            <div className="w-40 h-2 bg-gradient-to-r from-[#4ade80] via-emerald-500 to-[#22c55e] rounded-full mx-auto mb-8 shadow-2xl shadow-emerald-500/60"></div>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+            <div className="w-40 h-2 bg-white/20 rounded-full mx-auto mb-8"></div>
+            <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
               I'm a passionate developer who loves creating digital experiences that make a difference.
               <br />
-              <span className="text-gray-300">Here's my story and what drives me every day.</span>
+              <span className="text-white">Here's my story and what drives me every day.</span>
             </p>
           </div>
 
           {/* Main Content Section */}
           <div
-            ref={storyRef}
             id="story"
-            className={`flex flex-col lg:flex-row gap-12 items-start scroll-animate ${isVisible('story') ? 'animate-slideInLeft animate-delay-200' : ''}`}
+            className="flex flex-col lg:flex-row gap-12 items-start"
           >
 
             {/* Journey Text Content */}
             <div className="flex-1 space-y-6">
               <div className="relative">
-                {/* Decorative line with glow */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#4ade80] via-emerald-500 to-[#22c55e] rounded-full shadow-lg shadow-emerald-500/50"></div>
 
                 <div className="pl-8">
-                  <h2 className={`text-5xl font-bold text-white mb-8 flex items-center gap-3 transition-all duration-700 transform ${animations.journey.title ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
-                    }`}>
-                    <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent drop-shadow-lg">
+                  <h2 className="text-5xl font-bold text-white mb-8 flex items-center gap-3">
+                    <span className="text-white drop-shadow-lg">
                       My Journey
                     </span>
-                    <svg className="w-9 h-9 text-[#4ade80]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </h2>
 
                   <div className="space-y-6">
                     {journeyParagraphs.map((para, index) => {
-                      const animKey = `para${index + 1}`;
                       return (
-                        <div key={index} className={`group transition-all duration-700 transform ${animations.journey[animKey] ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
-                          }`}>
-                          <p className="text-lg text-gray-200 leading-relaxed relative pl-6 transition-all duration-300 hover:text-white">
+                        <div key={index} className="group">
+                          <p className="text-lg text-white leading-relaxed relative pl-6">
                             {/* Bullet point with glow */}
-                            <span className="absolute left-0 top-2 w-2.5 h-2.5 bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-full group-hover:scale-150 transition-transform shadow-lg shadow-emerald-400/80"></span>
+                            <span className="absolute left-0 top-2 w-2.5 h-2.5 bg-white rounded-full"></span>
                             {para}
                           </p>
                         </div>
@@ -256,10 +73,9 @@ const About = () => {
                   </div>
 
                   {/* Call to action with glassmorphism */}
-                  <div className={`mt-8 p-6 bg-[#1e293b]/60 backdrop-blur-md rounded-2xl border border-[#4ade80]/40 transition-all duration-700 transform shadow-xl shadow-emerald-500/20 ${animations.journey.quote ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
-                    }`}>
-                    <p className="text-gray-200 italic flex items-center gap-3">
-                      <svg className="w-7 h-7 text-[#4ade80] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="mt-8 p-6 bg-[#1e293b]/60 backdrop-blur-md rounded-2xl border border-white/20">
+                    <p className="text-white italic flex items-center gap-3">
+                      <svg className="w-7 h-7 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
                       <span className="text-lg font-medium">
@@ -270,91 +86,29 @@ const About = () => {
                 </div>
               </div>
             </div>
-
-            {/* Quick Profile Card with 3D Effects */}
-            <div className="lg:w-96 w-full">
-              <div className="sticky top-8 bg-[#0f172a]/70 backdrop-blur-xl rounded-3xl p-8 border border-[#4ade80]/40 shadow-2xl hover:shadow-emerald-500/40 transition-all duration-500 overflow-hidden hover:scale-105 hover:-translate-y-2">
-
-                {/* Decorative elements with enhanced glow */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#4ade80]/15 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#22c55e]/12 rounded-full blur-3xl"></div>
-
-                <div className="relative z-10">
-                  {/* Header */}
-                  <div className={`text-center mb-8 transition-all duration-700 transform ${animations.profile.header ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
-                    }`}>
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#4ade80] to-[#22c55e] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl shadow-emerald-500/60">
-                      <svg className="w-10 h-10 text-[#0f172a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <h3 className="text-3xl font-bold bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
-                      Quick Profile
-                    </h3>
-                  </div>
-
-                  {/* Stats with enhanced styling */}
-                  <div className="space-y-4">
-                    {profileStats.map((stat, index) => {
-                      const animKey = `stat${index + 1}`;
-                      return (
-                        <div
-                          key={stat.id}
-                          className={`group bg-[#1e293b]/60 backdrop-blur-sm rounded-2xl p-5 border border-white/10 hover:border-[#4ade80]/50 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20 transform hover:-translate-y-1 ${animations.profile[animKey] ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
-                            }`}
-                        >
-                          <div className="flex items-start gap-4">
-                            {/* Icon */}
-                            <div className={`bg-gradient-to-br ${stat.gradient} p-3 rounded-xl shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
-                              <div className="text-white">
-                                {stat.icon}
-                              </div>
-                            </div>
-
-                            {/* Content */}
-                            <div className="flex-1 min-w-0">
-                              <div className={`text-2xl font-bold mb-1 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
-                                {stat.number}
-                              </div>
-                              <div className="text-gray-200 text-sm font-medium leading-tight">
-                                {stat.description}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
         {/* Technical Skills Section */}
         <div
-          ref={skillsRef}
           id="skills"
           style={{ marginBottom: '80px' }}
-          className={`scroll-animate ${isVisible('skills') ? 'animate-popIn animate-delay-200' : ''}`}
         >
           {/* Section Title */}
-          <h2 className="text-6xl font-bold text-center mb-16 bg-gradient-to-r from-[#4ade80] via-emerald-400 to-[#22c55e] bg-clip-text text-transparent drop-shadow-2xl">
-            Technical Skills
+          <h2 className="text-6xl font-bold text-center mb-16 text-white drop-shadow-2xl">
+            Skills and Fundamentals
           </h2>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
 
             {/* Languages Card with 3D Effects */}
-            <div className={`group bg-[#1e293b]/70 backdrop-blur-xl rounded-3xl p-6 border border-[#4ade80]/40 hover:border-[#4ade80]/70 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/40 relative overflow-hidden transform hover:-translate-y-2 ${animations.skills.skill1 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#4ade80]/10 rounded-full blur-3xl"></div>
+            <div className="group bg-[#1e293b]/70 backdrop-blur-xl rounded-3xl p-6 border border-white/20 hover:border-white/40 hover:shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-[#4ade80]/20 group-hover:bg-[#4ade80]/30 p-2.5 rounded-xl transition-colors text-[#4ade80]">
+                  <div className="bg-white/20 group-hover:bg-white/30 p-2.5 rounded-xl text-white">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
@@ -363,20 +117,20 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-emerald-400 hover:to-green-400 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">C++</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-emerald-400 hover:to-green-400 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">C</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-emerald-400 hover:to-green-400 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Java</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">C++</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">C</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Java</span>
                 </div>
               </div>
             </div>
 
             {/* Backend Card */}
-            <div className={`group bg-[#0f172a]/70 backdrop-blur-xl rounded-3xl p-6 border border-emerald-500/40 hover:border-emerald-500/70 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/30 relative overflow-hidden transform hover:-translate-y-2 ${animations.skills.skill2 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl"></div>
+            <div className="group bg-[#0f172a]/70 backdrop-blur-xl rounded-3xl p-6 border border-white/20 hover:border-white/40 hover:shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-emerald-500/20 group-hover:bg-emerald-500/30 p-2.5 rounded-xl transition-colors text-emerald-400">
+                  <div className="bg-white/20 group-hover:bg-white/30 p-2.5 rounded-xl text-white">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                     </svg>
@@ -385,24 +139,24 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Java</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">SpringBoot</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">JavaScript</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Node.js</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Express</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">MongoDB</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-medium text-white bg-[#1e293b]/80 border border-emerald-500/30 hover:bg-[#1e293b] hover:border-emerald-500/60 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">MySQL</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Java</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">SpringBoot</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">JavaScript</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Node.js</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Express</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">MongoDB</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">MySQL</span>
                 </div>
               </div>
             </div>
 
             {/* Development Tools Card */}
-            <div className={`group bg-[#1e293b]/70 backdrop-blur-xl rounded-3xl p-6 border border-[#22c55e]/40 hover:border-[#22c55e]/70 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30 relative overflow-hidden transform hover:-translate-y-2 ${animations.skills.skill3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#22c55e]/10 rounded-full blur-3xl"></div>
+            <div className="group bg-[#1e293b]/70 backdrop-blur-xl rounded-3xl p-6 border border-white/20 hover:border-white/40 hover:shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="bg-[#22c55e]/20 group-hover:bg-[#22c55e]/30 p-2.5 rounded-xl transition-colors text-[#22c55e]">
+                  <div className="bg-white/20 group-hover:bg-white/30 p-2.5 rounded-xl text-white">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -412,9 +166,31 @@ const About = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Git</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">GitHub</span>
-                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 transition-all duration-200 cursor-default shadow-lg hover:shadow-xl hover:scale-110">Postman</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Git</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">GitHub</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Postman</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Fundamentals Card */}
+            <div className="group bg-[#0f172a]/70 backdrop-blur-xl rounded-3xl p-6 border border-white/20 hover:border-white/40 hover:shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="bg-white/20 group-hover:bg-white/30 p-2.5 rounded-xl text-white">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">Fundamentals</h3>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Object Oriented Programming</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Database Management System</span>
+                  <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg hover:shadow-xl">Operating System</span>
                 </div>
               </div>
             </div>
@@ -423,10 +199,10 @@ const About = () => {
 
           {/* Summary */}
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-3 bg-[#1e293b]/60 backdrop-blur-md rounded-full px-6 py-3 border border-[#4ade80]/40 shadow-lg shadow-emerald-500/20">
+            <div className="inline-flex items-center gap-3 bg-[#1e293b]/60 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
               <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 bg-[#4ade80] rounded-full animate-pulse shadow-lg shadow-emerald-400/80"></div>
-                <span className="text-gray-200 text-sm font-medium">Constantly learning & exploring new technologies</span>
+                <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                <span className="text-white text-sm font-medium">Constantly learning & exploring new technologies</span>
               </div>
             </div>
           </div>
@@ -434,77 +210,75 @@ const About = () => {
 
         {/* Competitive Programming Section */}
         <div
-          ref={cpRef}
           id="cp"
-          style={{ marginBottom: '80px' }}
-          className={`scroll-animate ${isVisible('cp') ? 'animate-bounceIn animate-delay-400' : ''}`}
+          style={{ marginBottom: '60px' }}
         >
-          <h2 className="text-6xl font-bold text-center mb-16 bg-gradient-to-r from-[#4ade80] via-emerald-400 to-[#22c55e] bg-clip-text text-transparent drop-shadow-2xl">
+          <h2 className="text-4xl font-bold text-center mb-10 text-white drop-shadow-2xl">
             Competitive Programming
           </h2>
 
           {/* Competitive Programming Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
 
             {/* LeetCode Card */}
-            <div className={`w-full transition-all duration-500 transform ${animations.cp.cp1 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-purple-500/20 relative overflow-hidden">
+            <div className="w-full">
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-3 shadow-2xl border border-purple-500/20 relative overflow-hidden h-[370px] flex flex-col">
                 <div className="absolute top-0 right-0 w-28 h-28 bg-purple-500/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-pink-500/10 rounded-full blur-3xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-center mb-6">
-                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2.5 rounded-xl shadow-lg shadow-orange-500/30">
-                      <img src="/images/leetcode-logo.png" alt="LeetCode" className="w-8 h-8 object-contain" />
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center justify-center h-[60px]">
+                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2 rounded-xl shadow-lg shadow-orange-500/30">
+                      <img src="/images/leetcode-logo.png" alt="LeetCode" className="w-6 h-6 object-contain" />
                     </div>
                   </div>
-                  <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">LeetCode</h2>
-                  <div className="space-y-3">
-                    <div className="group bg-gradient-to-r from-purple-900/40 to-purple-800/40 rounded-xl p-4 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-purple-500/20 p-2.5 rounded-xl group-hover:bg-purple-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h2 className="text-xl font-bold text-center mb-3 text-white h-[32px] flex items-center justify-center">LeetCode</h2>
+                  <div className="space-y-1.5">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Current Rank</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Current Rank</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Guardian</span>
+                        <span className="text-xl font-bold text-[#0f172a]">Guardian</span>
                       </div>
                     </div>
-                    <div className="group bg-gradient-to-r from-emerald-900/40 to-emerald-800/40 rounded-xl p-4 border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-emerald-500/20 p-2.5 rounded-xl group-hover:bg-emerald-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Problems Solved</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">600+</span>
+                        <span className="text-xl font-bold text-[#0f172a]">600+</span>
                       </div>
                     </div>
-                    <div className="group bg-gradient-to-r from-orange-900/40 to-orange-800/40 rounded-xl p-4 border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-orange-500/20 p-2.5 rounded-xl group-hover:bg-orange-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <circle cx="12" cy="12" r="10" strokeWidth={2} />
                               <circle cx="12" cy="12" r="6" strokeWidth={2} />
                               <circle cx="12" cy="12" r="2" fill="currentColor" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Max Rating</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent">2236</span>
+                        <span className="text-xl font-bold text-[#0f172a]">2236</span>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6">
-                    <a href="https://leetcode.com/u/Pritam1293/" target="_blank" rel="noopener noreferrer" className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30 flex items-center justify-center gap-2 group">
+                  <div className="mt-3">
+                    <a href="https://leetcode.com/u/Pritam1293/" target="_blank" rel="noopener noreferrer" className="w-full bg-white hover:bg-white/90 text-[#0f172a] font-semibold py-2 px-4 rounded-2xl hover:shadow-lg flex items-center justify-center gap-2 group h-[52px]">
                       <span>Visit Profile</span>
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
@@ -514,12 +288,12 @@ const About = () => {
             </div>
 
             {/* Codeforces Card */}
-            <div className={`w-full transition-all duration-500 transform ${animations.cp.cp2 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-blue-500/20 relative overflow-hidden">
+            <div className="w-full">
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-3 shadow-2xl border border-blue-500/20 relative overflow-hidden h-[370px] flex flex-col">
                 <div className="absolute top-0 right-0 w-28 h-28 bg-blue-500/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-3xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-center mb-6">
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center justify-center h-[60px]">
                     <div className="bg-gradient-to-br from-red-500 to-cyan-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/30">
                       <div className="flex items-end justify-center gap-1">
                         <div className="w-2 h-4 bg-yellow-400 rounded-sm"></div>
@@ -528,54 +302,54 @@ const About = () => {
                       </div>
                     </div>
                   </div>
-                  <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">Codeforces</h2>
-                  <div className="space-y-3">
-                    <div className="group bg-gradient-to-r from-blue-900/40 to-blue-800/40 rounded-xl p-4 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-blue-500/20 p-2.5 rounded-xl group-hover:bg-blue-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h2 className="text-xl font-bold text-center mb-3 text-white h-[32px] flex items-center justify-center">Codeforces</h2>
+                  <div className="space-y-1.5">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Current Rank</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Current Rank</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Specialist</span>
+                        <span className="text-xl font-bold text-[#0f172a]">Specialist</span>
                       </div>
                     </div>
-                    <div className="group bg-gradient-to-r from-emerald-900/40 to-emerald-800/40 rounded-xl p-4 border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-emerald-500/20 p-2.5 rounded-xl group-hover:bg-emerald-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Problems Solved</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">400+</span>
+                        <span className="text-xl font-bold text-[#0f172a]">400+</span>
                       </div>
                     </div>
-                    <div className="group bg-gradient-to-r from-cyan-900/40 to-cyan-800/40 rounded-xl p-4 border border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-cyan-500/20 p-2.5 rounded-xl group-hover:bg-cyan-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <circle cx="12" cy="12" r="10" strokeWidth={2} />
                               <circle cx="12" cy="12" r="6" strokeWidth={2} />
                               <circle cx="12" cy="12" r="2" fill="currentColor" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Max Rating</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">1479</span>
+                        <span className="text-xl font-bold text-[#0f172a]">1479</span>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6">
-                    <a href="https://codeforces.com/profile/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2 group">
+                  <div className="mt-3">
+                    <a href="https://codeforces.com/profile/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-white hover:bg-white/90 text-[#0f172a] font-semibold py-2 px-4 rounded-2xl hover:shadow-lg flex items-center justify-center gap-2 group h-[52px]">
                       <span>Visit Profile</span>
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
@@ -585,64 +359,64 @@ const About = () => {
             </div>
 
             {/* CodeChef Card */}
-            <div className={`w-full transition-all duration-500 transform ${animations.cp.cp3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-yellow-500/20 relative overflow-hidden">
+            <div className="w-full">
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-3 shadow-2xl border border-yellow-500/20 relative overflow-hidden h-[370px] flex flex-col">
                 <div className="absolute top-0 right-0 w-28 h-28 bg-yellow-500/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-orange-500/10 rounded-full blur-3xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-center mb-6">
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center justify-center h-[60px]">
                     <div className="bg-gradient-to-br from-yellow-500 to-orange-600 p-2.5 rounded-xl shadow-lg shadow-yellow-500/30">
                       <img src="/images/codechef-logo.jpg" alt="CodeChef" className="w-8 h-8 object-contain rounded" />
                     </div>
                   </div>
-                  <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">CodeChef</h2>
-                  <div className="space-y-3">
-                    <div className="group bg-gradient-to-r from-yellow-900/40 to-yellow-800/40 rounded-xl p-4 border border-yellow-500/30 hover:border-yellow-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-yellow-500/20 p-2.5 rounded-xl group-hover:bg-yellow-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h2 className="text-xl font-bold text-center mb-3 text-white h-[32px] flex items-center justify-center">CodeChef</h2>
+                  <div className="space-y-1.5">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Current Rank</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Current Rank</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">⭐⭐⭐</span>
+                        <span className="text-xl font-bold text-[#0f172a]">⭐⭐⭐</span>
                       </div>
                     </div>
-                    <div className="group bg-gradient-to-r from-emerald-900/40 to-emerald-800/40 rounded-xl p-4 border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-emerald-500/20 p-2.5 rounded-xl group-hover:bg-emerald-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Problems Solved</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">150+</span>
+                        <span className="text-xl font-bold text-[#0f172a]">150+</span>
                       </div>
                     </div>
-                    <div className="group bg-gradient-to-r from-orange-900/40 to-orange-800/40 rounded-xl p-4 border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-orange-500/20 p-2.5 rounded-xl group-hover:bg-orange-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <circle cx="12" cy="12" r="10" strokeWidth={2} />
                               <circle cx="12" cy="12" r="6" strokeWidth={2} />
                               <circle cx="12" cy="12" r="2" fill="currentColor" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Max Rating</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">1737</span>
+                        <span className="text-xl font-bold text-[#0f172a]">1737</span>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6">
-                    <a href="https://www.codechef.com/users/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/30 flex items-center justify-center gap-2 group">
+                  <div className="mt-3">
+                    <a href="https://www.codechef.com/users/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-white hover:bg-white/90 text-[#0f172a] font-semibold py-2 px-4 rounded-2xl hover:shadow-lg flex items-center justify-center gap-2 group h-[52px]">
                       <span>Visit Profile</span>
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
@@ -652,64 +426,64 @@ const About = () => {
             </div>
 
             {/* AtCoder Card */}
-            <div className={`w-full transition-all duration-500 transform ${animations.cp.cp4 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
-              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-indigo-500/20 relative overflow-hidden">
+            <div className="w-full">
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-3 shadow-2xl border border-indigo-500/20 relative overflow-hidden h-[370px] flex flex-col">
                 <div className="absolute top-0 right-0 w-28 h-28 bg-indigo-500/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-center mb-6">
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center justify-center h-[60px]">
                     <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/30">
                       <img src="/images/atcoder-logo.png" alt="AtCoder" className="w-8 h-8 object-contain" />
                     </div>
                   </div>
-                  <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AtCoder</h2>
-                  <div className="space-y-3">
-                    <div className="group bg-gradient-to-r from-indigo-900/40 to-indigo-800/40 rounded-xl p-4 border border-indigo-500/30 hover:border-indigo-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-indigo-500/20 p-2.5 rounded-xl group-hover:bg-indigo-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h2 className="text-xl font-bold text-center mb-3 text-white h-[32px] flex items-center justify-center">AtCoder</h2>
+                  <div className="space-y-1.5">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Current Rank</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Current Rank</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">6 Kyu</span>
+                        <span className="text-xl font-bold text-[#0f172a]">6 Kyu</span>
                       </div>
                     </div>
-                    <div className="group bg-gradient-to-r from-emerald-900/40 to-emerald-800/40 rounded-xl p-4 border border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-emerald-500/20 p-2.5 rounded-xl group-hover:bg-emerald-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Problems Solved</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Problems Solved</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">100+</span>
+                        <span className="text-xl font-bold text-[#0f172a]">100+</span>
                       </div>
                     </div>
-                    <div className="group bg-gradient-to-r from-purple-900/40 to-purple-800/40 rounded-xl p-4 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
-                      <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-purple-500/20 p-2.5 rounded-xl group-hover:bg-purple-500/30 transition-colors flex-shrink-0">
-                            <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                      <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
+                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <circle cx="12" cy="12" r="10" strokeWidth={2} />
                               <circle cx="12" cy="12" r="6" strokeWidth={2} />
                               <circle cx="12" cy="12" r="2" fill="currentColor" />
                             </svg>
                           </div>
-                          <span className="text-slate-200 font-medium text-base sm:text-lg">Max Rating</span>
+                          <span className="text-[#0f172a] font-medium text-sm">Max Rating</span>
                         </div>
-                        <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">885</span>
+                        <span className="text-xl font-bold text-[#0f172a]">885</span>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6">
-                    <a href="https://atcoder.jp/users/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center gap-2 group">
+                  <div className="mt-3">
+                    <a href="https://atcoder.jp/users/pritam1293" target="_blank" rel="noopener noreferrer" className="w-full bg-white hover:bg-white/90 text-[#0f172a] font-semibold py-2 px-4 rounded-2xl hover:shadow-lg flex items-center justify-center gap-2 group h-[52px]">
                       <span>Visit Profile</span>
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
