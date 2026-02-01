@@ -89,6 +89,76 @@ const About = () => {
           </div>
         </div>
 
+        {/* Work Experience Section */}
+        <div
+          id="experience"
+          style={{ marginBottom: '80px' }}
+        >
+          {/* Section Title */}
+          <h2 className="text-6xl font-bold text-center mb-16 text-white drop-shadow-2xl">
+            Work Experience
+          </h2>
+
+          {/* Experience Card */}
+          <div className="max-w-5xl mx-auto">
+            <div className="group bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 hover:shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
+
+              <div className="relative z-10">
+                {/* Company Header */}
+                <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
+                  <div>
+                    <h3 className="text-3xl font-bold text-white mb-2">OLX Autos</h3>
+                    <p className="text-xl text-white font-semibold">Software Engineer Intern</p>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-white font-medium">May 2025 – July 2025</span>
+                  </div>
+                </div>
+
+                {/* Responsibilities */}
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1.5 w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
+                    <p className="text-white text-lg leading-relaxed">
+                      Created REST APIs using the Spring Boot framework and suggested and implemented centralized exception handling across the codebase.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1.5 w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
+                    <p className="text-white text-lg leading-relaxed">
+                      Suggested and implemented security for API endpoints using JWT-based token authentication and Single Sign-On (SSO) mechanisms.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1.5 w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
+                    <p className="text-white text-lg leading-relaxed">
+                      Used Java, Spring Boot, Postman, and VS Code while working on backend services at OLX Autos.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Technologies Used */}
+                <div className="pt-6 border-t border-white/20">
+                  <div className="flex flex-wrap gap-2.5">
+                    <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg">Java</span>
+                    <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg">Spring Boot</span>
+                    <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg">REST APIs</span>
+                    <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg">JWT</span>
+                    <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg">SSO</span>
+                    <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg">Postman</span>
+                    <span className="px-4 py-2 rounded-full text-sm font-semibold text-[#0f172a] bg-white hover:bg-white/90 cursor-default shadow-lg">VS Code</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Technical Skills Section */}
         <div
           id="skills"
@@ -233,45 +303,45 @@ const About = () => {
                   </div>
                   <h2 className="text-xl font-bold text-center mb-3 text-white h-[32px] flex items-center justify-center">LeetCode</h2>
                   <div className="space-y-1.5">
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Current Rank</span>
+                          <span className="text-white font-medium text-sm">Current Rank</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">Guardian</span>
+                        <span className="text-xl font-bold text-white">Guardian</span>
                       </div>
                     </div>
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Problems Solved</span>
+                          <span className="text-white font-medium text-sm">Problems Solved</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">600+</span>
+                        <span className="text-xl font-bold text-white">600+</span>
                       </div>
                     </div>
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <circle cx="12" cy="12" r="10" strokeWidth={2} />
                               <circle cx="12" cy="12" r="6" strokeWidth={2} />
                               <circle cx="12" cy="12" r="2" fill="currentColor" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Max Rating</span>
+                          <span className="text-white font-medium text-sm">Max Rating</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">2236</span>
+                        <span className="text-xl font-bold text-white">2236</span>
                       </div>
                     </div>
                   </div>
@@ -304,45 +374,45 @@ const About = () => {
                   </div>
                   <h2 className="text-xl font-bold text-center mb-3 text-white h-[32px] flex items-center justify-center">Codeforces</h2>
                   <div className="space-y-1.5">
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Current Rank</span>
+                          <span className="text-white font-medium text-sm">Current Rank</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">Specialist</span>
+                        <span className="text-xl font-bold text-white">Specialist</span>
                       </div>
                     </div>
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Problems Solved</span>
+                          <span className="text-white font-medium text-sm">Problems Solved</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">400+</span>
+                        <span className="text-xl font-bold text-white">400+</span>
                       </div>
                     </div>
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <circle cx="12" cy="12" r="10" strokeWidth={2} />
                               <circle cx="12" cy="12" r="6" strokeWidth={2} />
                               <circle cx="12" cy="12" r="2" fill="currentColor" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Max Rating</span>
+                          <span className="text-white font-medium text-sm">Max Rating</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">1479</span>
+                        <span className="text-xl font-bold text-white">1479</span>
                       </div>
                     </div>
                   </div>
@@ -371,45 +441,45 @@ const About = () => {
                   </div>
                   <h2 className="text-xl font-bold text-center mb-3 text-white h-[32px] flex items-center justify-center">CodeChef</h2>
                   <div className="space-y-1.5">
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Current Rank</span>
+                          <span className="text-white font-medium text-sm">Current Rank</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">⭐⭐⭐</span>
+                        <span className="text-xl font-bold text-white">⭐⭐⭐</span>
                       </div>
                     </div>
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Problems Solved</span>
+                          <span className="text-white font-medium text-sm">Problems Solved</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">150+</span>
+                        <span className="text-xl font-bold text-white">150+</span>
                       </div>
                     </div>
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <circle cx="12" cy="12" r="10" strokeWidth={2} />
                               <circle cx="12" cy="12" r="6" strokeWidth={2} />
                               <circle cx="12" cy="12" r="2" fill="currentColor" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Max Rating</span>
+                          <span className="text-white font-medium text-sm">Max Rating</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">1737</span>
+                        <span className="text-xl font-bold text-white">1737</span>
                       </div>
                     </div>
                   </div>
@@ -438,45 +508,45 @@ const About = () => {
                   </div>
                   <h2 className="text-xl font-bold text-center mb-3 text-white h-[32px] flex items-center justify-center">AtCoder</h2>
                   <div className="space-y-1.5">
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Current Rank</span>
+                          <span className="text-white font-medium text-sm">Current Rank</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">6 Kyu</span>
+                        <span className="text-xl font-bold text-white">6 Kyu</span>
                       </div>
                     </div>
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Problems Solved</span>
+                          <span className="text-white font-medium text-sm">Problems Solved</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">100+</span>
+                        <span className="text-xl font-bold text-white">100+</span>
                       </div>
                     </div>
-                    <div className="group bg-white rounded-xl p-2 hover:bg-white/90 h-[52px] flex items-center">
+                    <div className="group bg-slate-800/90 rounded-xl p-2 hover:bg-slate-700/90 h-[52px] flex items-center">
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
-                          <div className="bg-gray-200 p-2 rounded-xl group-hover:bg-gray-300 flex-shrink-0">
-                            <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="bg-slate-700 p-2 rounded-xl group-hover:bg-slate-600 flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <circle cx="12" cy="12" r="10" strokeWidth={2} />
                               <circle cx="12" cy="12" r="6" strokeWidth={2} />
                               <circle cx="12" cy="12" r="2" fill="currentColor" />
                             </svg>
                           </div>
-                          <span className="text-[#0f172a] font-medium text-sm">Max Rating</span>
+                          <span className="text-white font-medium text-sm">Max Rating</span>
                         </div>
-                        <span className="text-xl font-bold text-[#0f172a]">885</span>
+                        <span className="text-xl font-bold text-white">885</span>
                       </div>
                     </div>
                   </div>

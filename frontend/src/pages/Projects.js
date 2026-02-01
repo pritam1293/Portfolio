@@ -10,10 +10,9 @@ const Projects = () => {
       githubLink: 'https://github.com/pritam1293/AlgoBoard/',
       techStack: ['Spring Boot', 'Java', 'MongoDB', 'REST API', 'JWT', 'React.js', 'Tailwind CSS'],
       highlights: [
-        'Developed a comprehensive full-stack platform that seamlessly aggregates real-time competitive programming statistics from multiple renowned coding platforms including Codeforces, Codechef, LeetCode, and AtCoder, creating a unified dashboard for programmers to track their coding journey.',
-        'Implemented robust security architecture featuring JWT-based authentication, secure OTP password recovery system, and automated email verification workflow, ensuring comprehensive protection of user data and maintaining the highest standards of application security.',
-        'Designed an intuitive and responsive analytics dashboard with interactive Chart.js visualizations that transform raw coding data into meaningful insights, enabling users to understand their rating progression patterns and identify areas for improvement at a glance.',
-        'Engineered highly optimized REST API endpoints with comprehensive validation rules and sophisticated error handling mechanisms, delivering lightning-fast response times and ensuring smooth data flow throughout the application.'
+        'Built a full-stack platform aggregating real-time competitive programming statistics from Codeforces, CodeChef, LeetCode, and AtCoder into a unified analytics dashboard.',
+        'Implemented secure authentication and account workflows using JWT, OTP-based password recovery, and automated email verification to ensure strong data protection.',
+        'Designed and optimized REST APIs and an interactive Chart.js-based dashboard to deliver fast data processing, clear rating progression insights, and smooth user experience.'
       ],
       gradient: 'from-purple-900/40 to-purple-800/40',
       borderColor: 'border-purple-500/30',
@@ -26,16 +25,15 @@ const Projects = () => {
     },
     {
       id: 'parking-lot',
-      title: 'Parking Lot Management Application',
+      title: 'Parking Lot Management',
       subtitle: 'Smart Parking System',
       date: 'February 2025',
       githubLink: 'https://github.com/pritam1293/ParkingLot',
-      techStack: ['Spring Boot', 'Java', 'MongoDB', 'REST API', 'HTML5', 'CSS', 'JavaScript'],
+      techStack: ['Spring Boot', 'Java', 'MongoDB', 'REST API', 'JWT', 'React.js', 'Tailwind CSS'],
       highlights: [
-        'Engineered a sophisticated full-stack smart parking management system that orchestrates seamless coordination between backend services and database operations, enabling efficient real-time vehicle tracking and management across multiple parking zones simultaneously.',
-        'Implemented an intelligent automated ticketing system with unique identification generation and dynamic pricing algorithms that adapt to parking duration and zone availability, significantly reducing manual intervention and virtually eliminating human errors in the billing process.',
-        'Built a powerful Admin Dashboard equipped with advanced search capabilities, comprehensive filtering options, and data analytics tools that empower parking facility staff to quickly identify operational bottlenecks and make informed decisions to optimize parking system performance.',
-        'Developed a secure role-based Admin Dashboard with granular access controls and real-time monitoring features, providing administrative staff with complete visibility into parking operations, entry-exit logs, and gate status tracking for enhanced facility management.'
+        'Developed a full-stack smart parking management system enabling real-time vehicle tracking and efficient management across multiple parking zones.',
+        'Implemented an automated ticketing and billing system with unique ticket generation and dynamic pricing based on parking duration and zone availability, minimizing manual effort and errors.',
+        'Built a secure, role-based Admin Dashboard with advanced search, analytics, and real-time monitoring of vehicles, gates, and entry–exit logs to optimize parking operations.'
       ],
       gradient: 'from-cyan-900/40 to-cyan-800/40',
       borderColor: 'border-cyan-500/30',

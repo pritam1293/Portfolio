@@ -82,6 +82,17 @@ export default function Home() {
               </button>
 
               <button
+                onClick={() => navigate('/about')}
+                className="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-xl border-2 border-white/10 cursor-pointer">
+                <span className="flex items-center justify-center gap-2">
+                  About Me
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </span>
+              </button>
+
+              <button
                 onClick={() => navigate('/contact')}
                 className="w-full sm:w-auto px-8 py-4 bg-[#252837]/80 backdrop-blur-md text-white font-bold rounded-xl border-2 border-white/60 cursor-pointer">
                 <span className="flex items-center justify-center gap-2">
