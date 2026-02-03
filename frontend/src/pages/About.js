@@ -109,7 +109,7 @@ const About = () => {
                 {/* Company Header */}
                 <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
                   <div>
-                    <h3 className="text-3xl font-bold text-white mb-2">OLX Autos</h3>
+                    <h3 className="text-3xl font-bold text-white mb-2">Cars24</h3>
                     <p className="text-xl text-white font-semibold">Software Engineer Intern</p>
                   </div>
                   <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30">
@@ -137,7 +137,7 @@ const About = () => {
                   <div className="flex items-start gap-3">
                     <div className="mt-1.5 w-2 h-2 bg-white rounded-full flex-shrink-0"></div>
                     <p className="text-white text-lg leading-relaxed">
-                      Used Java, Spring Boot, Postman, and VS Code while working on backend services at OLX Autos.
+                      Used Java, Spring Boot, Postman, and VS Code while working on backend services at Cars24.
                     </p>
                   </div>
                 </div>
